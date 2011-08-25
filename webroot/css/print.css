@@ -1,0 +1,32 @@
+body {
+	font-family: "arial", "sans-serif";
+	text-align: justify;
+	font-size: 13px;
+}
+h1,h2,h3,h4,h5,h6 {
+	margin: 4px 0;
+	padding: 4px 0;
+	font-weight: bold;
+	text-align: left;
+}
+h1 {
+	text-align: center;
+	border-bottom: 2px solid #444;
+	font-size: 2em;
+	font-weight: bold;
+}
+h2 {
+	font-size: 1.8em;
+	color: #444;
+}
+h3 {
+	font-size: 1.5em;
+	color: #444;
+}
+h4 {
+}
+p {
+	text-indent: 25px;
+}
+.indent { margin-left: 25px; }
+.indent2 { margin-left: 50px; }
