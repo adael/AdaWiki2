@@ -40,7 +40,7 @@ class WikiController extends AppController{
 			$this->Page->set($this->data);
 			$success = $this->Page->save();
 			if($success){
-				$this->redirect(array('action' => 'index', $title));
+				$this->redirect(array('action' => 'index', 'id' => $this->id));
 			}
 		}
 		$this->data = $this->Page->findById($this->id);
