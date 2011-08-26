@@ -27,6 +27,8 @@ CREATE TABLE `wiki_pages` (
   `title` varchar(255) NOT NULL,
   `content` longtext NOT NULL,
   `content_length` int(11) unsigned NOT NULL,
+  `content_keywords` varchar(255) NOT NULL,
+  `content_numwords` int(11) NOT NULL,
   `locked` tinyint(1) unsigned NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
@@ -41,7 +43,7 @@ CREATE TABLE `wiki_pages` (
 
 LOCK TABLES `wiki_pages` WRITE;
 /*!40000 ALTER TABLE `wiki_pages` DISABLE KEYS */;
-INSERT INTO `wiki_pages` VALUES ('Front','Front Page','Welcome to the CakePHP Wiki!\r\n\r\n* [Testing]',43,1,'2011-08-25 20:49:48','2011-08-26 00:01:46',1),('Help','Help page','Testing',7,1,'2011-08-25 21:06:50','2011-08-26 00:00:04',1),('Testing','asd asd','a sdas',6,0,'2011-08-26 00:05:10','2011-08-26 00:05:10',0);
+INSERT INTO `wiki_pages` VALUES ('Front','Front Page','Welcome to the CakePHP Wiki!\r\n\r\n* [Testing]',43,'',0,1,'2011-08-25 20:49:48','2011-08-26 00:01:46',1),('Help','Help page','Testing',7,'',0,1,'2011-08-25 21:06:50','2011-08-26 00:00:04',1),('Testing','asd asd','EDUCACIÃ“N FUNDAMENTAL\r\nPSICOLOGÃA REVOLUCIONARIA\r\n       \r\n',61,'',4,0,'2011-08-26 00:05:10','2011-08-26 00:05:10',0);
 /*!40000 ALTER TABLE `wiki_pages` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-08-26  0:11:15
+-- Dump completed on 2011-08-27  0:12:18
