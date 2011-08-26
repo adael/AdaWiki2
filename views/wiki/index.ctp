@@ -38,5 +38,6 @@ $modified = strtotime($page['modified']);
 
 $bytes = format_bytes($page['content_length'], 'array');
 $bytes = $bytes['rounded'] . "<b>" . $bytes['unit'] . "</b>";
+printf(__('Word count: %s.', true), $page['content_numwords']);
 printf(__('Size: %s. Last modified %s', true), $bytes, strftime("%c", $modified));
 echo "</div>";

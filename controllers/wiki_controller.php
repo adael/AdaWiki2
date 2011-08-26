@@ -3,8 +3,9 @@
 class WikiController extends AppController{
 
 	var $uses = array('Page');
-	var $helpers = array('Form');
+	var $helpers = array('Form', 'Cache');
 	var $layout = 'wiki';
+	var $cacheActions = true;
 
 	/**
 	 *
@@ -30,6 +31,7 @@ class WikiController extends AppController{
 			$this->redirect(array('action' => 'edit', 'id' => $this->id));
 		}
 		$this->set('page', $this->Page->data[$this->Page->alias]);
+		$this->set('title', $this->Page->data[$this->Page->alias]['title']);
 	}
 
 	function edit(){
@@ -44,6 +46,7 @@ class WikiController extends AppController{
 			}
 		}
 		$this->data = $this->Page->findById($this->id);
+		$this->set('title', $this->data[$this->Page->alias]['title']);
 	}
 
 	function admin(){

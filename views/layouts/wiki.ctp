@@ -28,14 +28,17 @@ $tabitems = array(
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<title>AdaWiki v2</title>
 		<?php echo $this->Html->css('site'); ?>
-		<?php echo $this->Html->css('SexyButtons/sexybuttons')?>
+		<?php echo $this->Html->css('SexyButtons/sexybuttons') ?>
 		<?php echo $this->Html->script('jquery.min.js'); ?>
-		<?php echo $scripts_for_layout;?>
+		<?php echo $scripts_for_layout; ?>
 		<?php echo $this->Html->script('wiki.js'); ?>
 	</head>
 	<body>
 		<div class="page-wrapper">
 			<div class='page-header'>
+				<div class="page-title">
+					<?= $title ?> (<?= $this->params['action'] ?>)
+				</div>
 				<div class="page-tabs">
 					<?php
 					foreach($tabitems as $item){
@@ -47,9 +50,6 @@ $tabitems = array(
 						}
 					}
 					?>
-				</div>
-				<div class="page-title">
-					<?= $this->data['Page']['title'] ?> (<?= $this->params['action'] ?>)
 				</div>
 				<br class="clear"/>
 			</div>

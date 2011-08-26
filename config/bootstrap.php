@@ -85,9 +85,27 @@ function format_bytes($bytes, $output = 'text'){
 		return array(
 			'bytes' => $bytes,
 			'unit' => $s[$e],
-			'rounded' => ($bytes / pow(1024, floor($e))),
+			'rounded' => $rounded,
 		);
 	}else{
 		return "{$rounded}{$unit}";
 	}
+}
+
+define("WORD_COUNT_MASK", "/(\p{L}[\p{L}\p{Mn}\p{Pd}'\x{2019}]*){4,}/u");
+
+function str_word_count_utf8($string, $format = 0){
+	switch($format){
+		case 1:
+			preg_match_all(WORD_COUNT_MASK, $string, $matches);
+			return $matches[0];
+		case 2:
+			preg_match_all(WORD_COUNT_MASK, $string, $matches, PREG_OFFSET_CAPTURE);
+			$result = array();
+			foreach($matches[0] as $match){
+				$result[$match[1]] = $match[0];
+			}
+			return $result;
+	}
+	return preg_match_all(WORD_COUNT_MASK, $string, $matches);
 }
