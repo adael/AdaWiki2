@@ -4,7 +4,7 @@
 
 * CakePHP 1.3.x
 
-## Instalation
+## Installation
 
 1. Clone app into your cakephp installation
 2. Create a database
