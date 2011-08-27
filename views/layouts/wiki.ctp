@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>AdaWiki v2</title>
+		<title>AdaWiki2</title>
 		<?php echo $this->Html->css('site'); ?>
 		<?php echo $this->Html->css('SexyButtons/sexybuttons') ?>
 		<?php echo $this->Html->script('jquery.min.js'); ?>
@@ -18,7 +18,7 @@
 					<?php
 					foreach($mainmenu as $_menuitem){
 						echo $this->Html->link($_menuitem['Menu']['title'], "/wiki/index/id:{$_menuitem['Menu']['pages_id']}", array(
-							'class' => $_menuitem['Menu']['class'],
+							'class' => $_menuitem['Menu']['class'] . ($_menuitem['Menu']['pages_id'] == $this->params['named']['id'] ? ' active' : ''),
 						));
 					}
 					?>
@@ -46,7 +46,7 @@
 				<div class="page-footer-options">
 					<?php
 					if($this->params['action'] == 'index'){
-						echo $this->Html->link(__('Print', true), '/wiki/print/id:' . $this->params['named']['id']);
+						echo $this->Html->link(__('Print', true), '/wiki/index/print:1/id:' . $this->params['named']['id']);
 					}
 					echo __('Font:', true);
 					?>

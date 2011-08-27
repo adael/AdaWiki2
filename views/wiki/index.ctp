@@ -10,7 +10,11 @@ if(!isset($content) && isset($page['content'])){
 
 if(!empty($title)){
 	echo "<div class='content-header'>";
-	echo "<h1>{$page['title']}</h1>";
+	echo "<h1>{$title}</h1>";
+	echo $this->Html->link('', '/wiki/edit/id:' . $this->params['named']['id'], array(
+		'class' => 'wiki-edit-button',
+		'title' => __('Edit this page', true),
+	));
 	echo "</div>";
 }
 

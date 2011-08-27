@@ -28,7 +28,7 @@ class WikiController extends AppController{
 			'fields' => array('pages_id', 'title', 'class'),
 			'conditions' => array('visible' => 1),
 			'order' => 'order',
-		));
+				));
 		$this->set('mainmenu', $menus);
 	}
 
@@ -38,10 +38,20 @@ class WikiController extends AppController{
 		if(empty($this->Page->data[$this->Page->alias]['content'])){
 			$this->redirect(array('action' => 'edit', 'id' => $this->id));
 		}
-		$this->set('page', $this->Page->data[$this->Page->alias]);
+
+		if(!empty($this->params['named']['print'])){
+			$this->layout = 'print';
+			$this->set(array(
+				'content' => $this->Page->data[$this->Page->alias]['content'],
+				'title' => $this->Page->data[$this->Page->alias]['title'],
+			));
+		}else{
+			$this->set('page', $this->Page->data[$this->Page->alias]);
+		}
 	}
 
 	function preview(){
+		$this->layout = 'print';
 		$this->set('content', $this->data);
 		$this->render('index');
 	}

@@ -59,13 +59,26 @@ code,
 	color: #333;
 	text-decoration: none;
 	padding: 3px 0;
-	margin-left: 5px;
-	margin-bottom: 5px;
 	padding-left: 8px;
 	border: 1px solid transparent;
 }
+
 .main-menu a:hover {
 	border-right: 0;
+}
+
+.main-menu a.normal {
+	color: #333;
+
+	border: 1px solid #67aed8;
+	background-color: #d8eaf3;
+	box-shadow: inset 0 1px 3px #fff, inset 0 -15px #cbe3ef, 0 0 3px #d8eaf3;
+	-o-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #cbe3ef, 0 0 3px #d8eaf3;
+	-webkit-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #cbe3ef, 0 0 3px #d8eaf3;
+	-moz-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #cbe3ef, 0 0 3px #d8eaf3;
+	color: #3985a8;
+	text-shadow: 0 1px #fff;
+
 }
 
 .main-menu a.pink {
@@ -73,7 +86,6 @@ code,
 	text-shadow: 0 1px #fff;
 	border: 1px solid #ff9fd1;
 	background-color: #ffcae6;
-	border-radius: 10px 0 0 10px;
 	box-shadow: inset 0 1px 3px #fff, inset 0 -15px #ffcae6, 0 0 3px #ffb9de;
 	-o-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #ffcae6, 0 0 3px #ffb9de;
 	-webkit-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #ffcae6, 0 0 3px #ffb9de;
@@ -85,12 +97,19 @@ code,
 	text-shadow: 0 1px #333;
 	border: 1px solid #333;
 	background-color: #333;
-	border-radius: 10px 0 0 10px;
 	box-shadow: inset 0 1px 3px #fff, inset 0 -15px #333, 0 0 3px #333;
 	-o-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #333, 0 0 3px #333;
 	-webkit-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #333, 0 0 3px #333;
 	-moz-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #333, 0 0 3px #333;
 }
+
+.main-menu a.active {
+	border-radius: 0 10px 10px 0;
+	margin-left: 0;
+	margin-right: -10px;
+}
+
+
 
 .page-content {
 	position: absolute;
@@ -257,4 +276,13 @@ code,
 
 .page-footer-credits {
 	float: right;
+}
+
+.wiki-edit-button {
+	float: right;
+	width: 32px;
+	height: 32px;
+	margin-top: -38px;
+	margin-right: 16px;
+	background: transparent url('../img/axialis-web20-basic/Blue/pen.png') no-repeat 0 0;
 }

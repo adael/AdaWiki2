@@ -2,10 +2,10 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>Wiki</title>
-		<link rel="stylesheet" type="text/css" href="assets/print.css"/>
+		<title>AdaWiki2</title>
+		<?php echo $scripts_for_layout;?>
 	</head>
 	<body>
-		<?php echo $content ?>
+		<?php echo $content_for_layout ?>
 	</body>
 </html>
