@@ -48,6 +48,7 @@
 					if($this->params['action'] == 'index'){
 						echo $this->Html->link(__('Print', true), '/wiki/index/print:1/id:' . $this->params['named']['id']);
 					}
+					echo " - ";
 					echo __('Font:', true);
 					?>
 					<a href="#" class="font-bigger">A</a> /
@@ -55,7 +56,7 @@
 					<a href="#" class="font-reset"><?= __('Normal', true) ?></a>
 				</div>
 				<div class="page-footer-credits">
-					Adawiki v2.0 Por <a href="mailto:adaelxp@gmail.com">Carlos Gant</a>
+					<?php echo __("AdaWiki2 by ", true)?> <a href="mailto:adaelxp@gmail.com">Carlos Gant</a>
 				</div>
 			</div>
 		</div>

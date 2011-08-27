@@ -1,0 +1,64 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2011-08-27 04:01+0200\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: \views\layouts\wiki.ctp:31;34
+msgid "Powered by CakePHP"
+msgstr ""
+
+#: \views\layouts\wiki.ctp:49
+msgid "Print"
+msgstr ""
+
+#: \views\layouts\wiki.ctp:52
+msgid "Font:"
+msgstr ""
+
+#: \views\layouts\wiki.ctp:56
+msgid "Normal"
+msgstr ""
+
+#: \views\layouts\wiki.ctp:59
+msgid "AdaWiki2 by "
+msgstr ""
+
+#: \views\wiki\edit.ctp:21
+msgid "Title"
+msgstr ""
+
+#: \views\wiki\edit.ctp:27
+msgid "Content"
+msgstr ""
+
+#: \views\wiki\edit.ctp:33
+msgid "Save"
+msgstr ""
+
+#: \views\wiki\index.ctp:16
+msgid "Edit this page"
+msgstr ""
+
+#: \views\wiki\index.ctp:55
+msgid "Word count: %s."
+msgstr ""
+
+#: \views\wiki\index.ctp:56
+msgid "Size: %s. Last modified %s"
+msgstr ""
+
+#: \webroot\test.php:88
+msgid "Debug setting does not allow access to this url."
+msgstr ""
+
