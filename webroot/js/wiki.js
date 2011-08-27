@@ -36,14 +36,11 @@ $(function(){
 		$content.css('font-size', _f);
 	}
 
-	// Cakephp flash message
-	/*
-	$("#flashMessage").slideDown();
-	setTimeout(function(){$("#flashMessage").slideUp();}, 3000);
-	*/
-
+	$("#flashMessage").slideDown('normal');
+	setTimeout(function(){$("#flashMessage").slideUp('normal');}, 3000);
 
 });
+
 
 /**
  * jQuery Cookie plugin

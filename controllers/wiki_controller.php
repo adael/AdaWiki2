@@ -57,7 +57,6 @@ class WikiController extends AppController{
 	}
 
 	function edit(){
-		$this->Session->setFlash("Saved");
 		$alias = $this->_getNamed('alias');
 		$page = $this->Page->find('first', array('conditions' => array('alias' => $this->_getNamed('alias'))));
 		if(!empty($this->data)){

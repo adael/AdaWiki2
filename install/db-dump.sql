@@ -25,14 +25,15 @@ DROP TABLE IF EXISTS `wiki_menus`;
 CREATE TABLE `wiki_menus` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
-  `pages_id` varchar(255) NOT NULL,
-  `order` int(11) NOT NULL,
-  `visible` int(11) NOT NULL,
-  `class` varchar(32) NOT NULL,
+  `link` text NOT NULL,
+  `link_type` enum('page','internal','external') NOT NULL,
+  `order` int(11) NOT NULL DEFAULT '0',
+  `visible` int(11) NOT NULL DEFAULT '1',
+  `class` enum('silver','pink','blue','gold','green','red','none') NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +42,7 @@ CREATE TABLE `wiki_menus` (
 
 LOCK TABLES `wiki_menus` WRITE;
 /*!40000 ALTER TABLE `wiki_menus` DISABLE KEYS */;
-INSERT INTO `wiki_menus` VALUES (1,'Front Page','Front',1,1,'normal','2011-08-27 01:27:32','0000-00-00 00:00:00'),(2,'Other menu option','OtherMenu2',2,1,'normal','2011-08-27 02:40:32','0000-00-00 00:00:00'),(3,'Menu it\'s editable','OtherMenu3',3,1,'normal','2011-08-27 03:26:48','0000-00-00 00:00:00');
+INSERT INTO `wiki_menus` VALUES (1,'Portada','Front','page',0,1,'blue','2011-08-27 21:39:54','2011-08-27 21:43:54'),(2,'Enlace a otra página','Enlace_a_otra_web','page',0,1,'red','2011-08-27 21:44:01','2011-08-27 21:48:39');
 /*!40000 ALTER TABLE `wiki_menus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,7 +54,8 @@ DROP TABLE IF EXISTS `wiki_pages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `wiki_pages` (
-  `id` varchar(255) NOT NULL DEFAULT '',
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `alias` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` longtext NOT NULL,
   `content_length` int(11) unsigned NOT NULL,
@@ -63,8 +65,9 @@ CREATE TABLE `wiki_pages` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   `internal` tinyint(1) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `NewIndex1` (`alias`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +76,7 @@ CREATE TABLE `wiki_pages` (
 
 LOCK TABLES `wiki_pages` WRITE;
 /*!40000 ALTER TABLE `wiki_pages` DISABLE KEYS */;
-INSERT INTO `wiki_pages` VALUES ('Front','Front Page','## Welcome to the CakePHP Wiki!!\r\n\r\n* [Testing]\r\n\r\n<-- Menu here -->',68,'',6,1,'2011-08-25 20:49:48','2011-08-26 00:01:46',1),('Help','Help page','Testing',7,'',0,1,'2011-08-25 21:06:50','2011-08-26 00:00:04',1);
+INSERT INTO `wiki_pages` VALUES (1,'Front','Portada','# Esto es mi página web\r\n\r\nMucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto mucho texto\r\n\r\n* Opcion 1\r\n* Opcion 2\r\n* [Enlace a otra web]',472,'',72,0,'2011-08-27 21:38:50','2011-08-27 21:38:50',0),(2,'Enlace_a_otra_web','Enlace a otra página','Cosa relacionada',16,'',2,0,'2011-08-27 21:39:19','2011-08-27 21:39:19',0);
 /*!40000 ALTER TABLE `wiki_pages` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -86,4 +89,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-08-27  4:11:56
+-- Dump completed on 2011-08-27 21:50:43
