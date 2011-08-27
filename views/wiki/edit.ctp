@@ -7,7 +7,8 @@ $html->script('markitup/markitup/jquery.markitup', array('inline' => false));
 $html->script('markitup/markitup/sets/markdown/set', array('inline' => false));
 
 $html->scriptBlock("	$(document).ready(function(){
-		$('#txtContentEdit').markItUp(mySettings);
+		mySettings.previewParserPath = '{$this->webroot}/wiki/preview';
+		$('#txtContentEdit').markItUp(mySettings).focus();
 	});", array('inline' => false));
 
 /* @var $form FormHelper */
@@ -19,12 +20,13 @@ echo $form->create(null, array(
 echo $form->input('title', array(
 	'label' => __('Title', true),
 	'size' => 50,
+	'default' => $this->params['named']['id'],
 ));
 
 echo $form->input('content', array(
 	'label' => __('Content', true),
 	'id' => 'txtContentEdit',
-	'rows' => '25',
+	'rows' => '15',
 	'cols' => '80',
 ));
 

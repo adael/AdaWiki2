@@ -2,10 +2,9 @@
 
 class WikiController extends AppController{
 
-	var $uses = array('Page');
-	var $helpers = array('Form', 'Cache');
-	var $layout = 'wiki';
-	var $cacheActions = true;
+	var $uses = array('Page', 'Menu');
+	var $helpers = array('Form');
+	var $layout = "wiki";
 
 	/**
 	 *
@@ -24,6 +23,15 @@ class WikiController extends AppController{
 		}
 	}
 
+	function beforeRender(){
+		$menus = $this->Menu->find('all', array(
+			'fields' => array('pages_id', 'title', 'class'),
+			'conditions' => array('visible' => 1),
+			'order' => 'order',
+		));
+		$this->set('mainmenu', $menus);
+	}
+
 	function index(){
 		$this->Page->id = $this->id;
 		$this->Page->read();
@@ -31,7 +39,11 @@ class WikiController extends AppController{
 			$this->redirect(array('action' => 'edit', 'id' => $this->id));
 		}
 		$this->set('page', $this->Page->data[$this->Page->alias]);
-		$this->set('title', $this->Page->data[$this->Page->alias]['title']);
+	}
+
+	function preview(){
+		$this->set('content', $this->data);
+		$this->render('index');
 	}
 
 	function edit(){
@@ -42,6 +54,7 @@ class WikiController extends AppController{
 			$this->Page->set($this->data);
 			$success = $this->Page->save();
 			if($success){
+				$this->Session->setFlash("Saved");
 				$this->redirect(array('action' => 'index', 'id' => $this->id));
 			}
 		}

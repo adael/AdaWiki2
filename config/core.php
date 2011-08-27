@@ -91,7 +91,7 @@ Configure::write('App.encoding', 'UTF-8');
  * Turn off all caching application-wide.
  *
  */
-# Configure::write('Cache.disable', true);
+#Configure::write('Cache.disable', true);
 
 /**
  * Enable cache checking.
@@ -301,8 +301,15 @@ Configure::write('Acl.database', 'default');
  * 	));
  *
  */
-Cache::config('default', array('engine' => 'File'));
+Cache::config('default', array(
+	'engine' => 'File', //[required]
+	'duration' => 3600, //[optional]
+	'probability' => 100, //[optional]
+	'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
+	'prefix' => 'cake_', //[optional]  prefix every cache file with this string
+	'lock' => false, //[optional]  use file locking
+	'serialize' => false,
+));
 
 Configure::write('Wiki.front', 'Front');
-
 Configure::write('Config.language', 'esp');

@@ -1,5 +1,13 @@
 <?php
 
+function gentime() {
+    static $a;
+    if($a == 0) $a = microtime(true);
+    else return (string)(microtime(true)-$a);
+}
+
+gentime();
+
 /**
  * This file is loaded automatically by the app/webroot/index.php file after the core bootstrap.php
  *
@@ -54,12 +62,14 @@ function wiki_encode_title($title){
 	return $title;
 }
 
+
+
 /**
  * debug function
  */
-function prd(){
+function prd(&$a){
 	echo "<pre style='border: 1px solid black; padding: 3px; font-size: 11px; font-family: courier new; background: #EEE; color: #000;'>";
-	print_r(func_get_args());
+	var_dump($a);
 	echo "</pre>";
 	die();
 }
@@ -108,4 +118,27 @@ function str_word_count_utf8($string, $format = 0){
 			return $result;
 	}
 	return preg_match_all(WORD_COUNT_MASK, $string, $matches);
+}
+
+// Imprime el último query
+function pq($query = null){
+	$cm = ConnectionManager::getInstance();
+	$dbo = reset($cm->_dataSources);
+	$log = $dbo->_queriesLog;
+	$query = end($log);
+	//$query['query'] = self::format_query($query['query']);
+	echo "<pre>";
+	print_r($query);
+	echo "</pre>";
+}
+
+function profile(){
+	echo "<pre>";
+	print_r(array(
+		sprintf("PEAK: %s", format_bytes(memory_get_peak_usage())),
+		sprintf("PEAK: %s", format_bytes(memory_get_usage())),
+		sprintf("TIME: %.2fms", gentime()),
+	));
+	echo "</pre>";
+	die();
 }
