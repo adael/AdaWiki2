@@ -1,6 +1,6 @@
 # Installing instructions
 
-* Install cakephp
+* Install cakephp 1.3.x
 * Replace app folder
 * Create a database
 * Import install/db-schema.sql
