@@ -6,8 +6,5 @@
 
 ## Installation
 
-1. Clone app into your cakephp installation
-2. Create a database
-3. Import app/db-dump.sql to the database
-4. Configure app/config/database.php
-5. Enjoy!
+Check install/INSTALL.md for instructions
+
