@@ -1,2 +1,2 @@
-<?
+<?php
 debug($this->data);

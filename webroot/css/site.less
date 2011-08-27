@@ -1,0 +1,360 @@
+.border-radius (@radius) {
+	border-radius: @radius;
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+}
+
+.box-shadow (@shadow) {
+	box-shadow: @shadow;
+	-moz-box-shadow: @shadow;
+	-webkit-box-shadow: @shadow;
+}
+
+.menuitem (@color) {
+	@lcolor: lighten(@color, 4%);
+	@dcolor: darken(@color, 50%);
+
+	background-color: @lcolor;
+	/* border: 1px solid @dcolor; */
+	color: @dcolor;
+
+	box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color, 0 0 2px @dcolor;
+	-o-box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color, 0 0 2px @dcolor;
+	-webkit-box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color, 0 0 2px @dcolor;
+	-moz-box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color, 0 0 2px @dcolor;
+}
+
+/* LAYOUT */
+body {
+	font-family: "helvetica", "sans-serif";
+	font-size: 13px;
+	margin: 0; padding: 0;
+	background: #EBEBEB;
+}
+
+.caption {
+	display: block;
+	margin: 5px auto;
+	padding: 0;
+	padding-right: 32px;
+	font-weight: bold;
+	font-size: 2.5em;
+	color: #abadb3;
+}
+
+.page-wrapper {
+	position: absolute;
+	top: 10px; bottom: 10px;
+	left: 10px; right: 10px;
+	max-width: 960px;
+	min-width: 560px;
+	margin: 10px auto;
+	background: #FAFAFA;
+	overflow: hidden;
+
+	.border-radius(6px);
+	.box-shadow(0px 0px 5px #555);
+}
+
+.page-logo {
+	position: absolute;
+	top: 20px;
+	left: 5px;
+	width: 15%;
+}
+
+.page-menu {
+	position: absolute;
+	top: 0px; left: 0; bottom: 0;
+	border-right: 1px solid #DDD;
+	width: 16%;
+	padding-top: 70px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.main-menu a {
+	display: block;
+	text-decoration: none;
+	padding: 5px 0;
+	padding-left: 8px;
+	margin-bottom: 2px;
+	color: #333;
+}
+
+.main-menu a:hover {
+	border-right: 0;
+}
+
+.main-menu a.silver {
+	.menuitem(#DDD);
+}
+
+.main-menu a.pink {
+	.menuitem(#ffb9de);
+}
+
+.main-menu a.blue {
+	.menuitem(#d8eaf3);
+}
+
+.main-menu a.gold {
+	.menuitem(#FFD966);
+}
+
+.main-menu a.green {
+	.menuitem(#94e96b);
+}
+
+.main-menu a.red {
+	.menuitem(#ffa6a8);
+}
+
+.main-menu a.active {
+	.border-radius(0 10px 10px 0);
+	margin-left: 0;
+	margin-right: -10px;
+	font-weight: bold;
+}
+
+.page-content {
+	position: absolute;
+	top: 16px; left: 16.1%; right: 8px;
+	bottom: 28px;
+	padding: 16px 20px;
+	overflow: auto;
+}
+
+.page-content a.existe {
+	color: blue;
+}
+
+.page-content a.noexiste {
+	color: gray;
+}
+
+.page-content h2 {
+	font-size: 1.8em;
+	margin: 8px 0 4px 0;
+}
+.page-content h3 {
+	font-size: 1.5em;
+	margin: 8px 0 4px 0;
+}
+
+.content-body {
+
+}
+
+.page-footer {
+	position: absolute;
+	bottom: 0; left: 16%; right: 0;
+	height: 28px;
+	line-height: 28px;
+	padding: 0 10px;
+	background: #EEE;
+	-webkit-border-radius: 0 0 6px 6px;
+
+}
+.page-footer a{color: #222; text-decoration: none;}
+
+
+.big-form {}
+
+.big-form div.input {
+	margin-bottom: 25px;
+	color: #666;
+}
+
+.big-form div.input > p {
+	margin: 0;
+	padding: 0;
+	padding-top: 2px;
+	padding-left: 2px;
+	font-size: 0.9em;
+}
+
+.big-form label {
+	display: block;
+	margin: 5px auto;
+	font-weight: bold;
+	font-size: 1.4em;
+	color: #abadb3;
+}
+
+.big-form div.checkbox label {
+	display: inline;
+	margin-left: 4px;
+}
+
+.big-form input[type="text"] {
+	border: 1px solid #abadb3;
+	width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	display: block;
+	background: #FFF;
+	margin: 5px auto;
+	color: #333;
+	padding: 3px;
+}
+
+.big-form input[type="text"] {
+	font-size: 1.3em;
+}
+
+.big-form input[type="submit"] {
+	font-weight: bold;
+}
+
+.big-form select {
+	font-size: 1.3em;
+	padding: 3px;
+	color: #333;
+}
+
+.big-form .markItUp  {
+	width: 100%;
+	margin: 10px 0;
+	padding: 0;
+}
+
+.big-form .markItUpEditor {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin: 0;
+}
+
+.page-wrapper .saving {
+	display: block;
+	width: 90%;
+	margin: 0px auto;
+	padding: 10px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	color: #444;
+	background: #F8F2E5;
+	-webkit-border-radius: 0 0 12px 12px
+}
+
+.page-content hr {
+    margin: 5px 0;
+    height: 1px;
+	border: 0;
+    background: #abadb3;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(#fafafa), to(#fafafa), color-stop(50%, #abadb3));
+}
+
+.content-footer {
+	color: #AAA;
+	font-size: 0.8em;
+	text-align: center;
+
+	/*
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(#fafafa), to(#fafafa), color-stop(50%, #67aed8));
+	border-top: 1px solid #67aed8;
+	border-bottom: 1px solid #67aed8;
+	*/
+}
+
+.page-menu-credits {
+	position: absolute;
+	bottom: 3px;
+	text-align: center;
+	width: 100%;
+	padding: 4px 0;
+	font-size: 0.8em;
+	color: #999;
+}
+
+.page-menu-credits p {
+	padding: 0;
+	margin: 3px 0;
+}
+
+
+.page-menu-credits a {
+	color: #999;
+	text-decoration: none;
+}
+
+.page-footer-options {
+	float: left;
+}
+
+.page-footer-credits {
+	float: right;
+}
+
+.wiki-edit-button {
+	float: right;
+	padding-top: 16px;
+	min-width: 16px;
+	margin-top: -38px;
+	margin-right: 16px;
+	background: transparent url('../img/icons/axialis/web20/rounded/Green/16x16/Write.png') no-repeat top right;
+	color: #4ca83d;
+	text-decoration: none;
+	opacity: 0.3;
+}
+
+.wiki-edit-button:hover {
+	opacity: 1;
+}
+
+.wiki-edit-button span {
+	display: none;
+}
+
+.wiki-edit-button:hover span {
+	display: block;
+	margin-top: 4px;
+}
+
+.wiki-add-menu {
+	float: right;
+	height: 16px;
+	padding-right: 20px;
+	margin-top: 4px;
+	margin-right: 4px;
+	background: transparent url(../img/icons/axialis/web20/rounded/Green/16x16/Plus.png) no-repeat right center;
+	color: #4ca83d;
+	text-decoration: none;
+	opacity: 0.3;
+}
+
+.wiki-add-menu:hover {
+	opacity: 1;
+}
+
+.wiki-add-menu span {
+	display: none;
+}
+
+.wiki-add-menu:hover span {
+	display: inline;
+}
+
+.wiki-print-page {
+	padding-left: 22px;
+	background: transparent url(../img/icons/axialis/web20/16x16/Green/Printer.png) no-repeat 0 0;
+}
+
+#flashMessage {
+	position: absolute;
+	top: 0;
+	min-width: 300px;
+	margin-left: -150px;
+	padding: 16px;
+	font-size: 1.4em;
+	left: 50%;
+	z-index: 1;
+	.border-radius (0 0 15px 15px);
+	.menuitem(#d8eaf3);
+}

@@ -312,4 +312,6 @@ Cache::config('default', array(
 ));
 
 Configure::write('Wiki.front', 'Front');
-Configure::write('Config.language', 'esp');
+Configure::write('Config.language', 'eng');
+
+Configure::write('Routing.prefixes', array('admin'));

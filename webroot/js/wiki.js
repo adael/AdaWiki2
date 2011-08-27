@@ -1,0 +1,90 @@
+$(function(){
+
+	var $content = $(".content-body:first");
+
+	$("#font-bigger").click(function(e){
+		e.preventDefault();
+		var f = parseFloat($content.css('font-size'));
+		f+=2;
+		if(f > 40){
+			f = 40;
+		}
+		$content.css('font-size', f);
+		$.cookie('font-size', f, {expires: 1, path: '/'});
+	});
+
+
+	$("#font-smaller").click(function(e){
+		e.preventDefault();
+		var f = parseFloat($content.css('font-size'));
+		f -= 2;
+		if(f < 7) f = 7;
+		$content.css('font-size', f);
+		$.cookie('font-size', f, {expires: 1, path: '/'});
+	});
+
+	$("#font-normal").click(function(e){
+		e.preventDefault();
+		var f = $('body').css('font-size');
+		$.cookie('font-size', f, {expires: 1, path: '/'});
+		$content.css('font-size', f);
+	});
+
+	var _f = $.cookie('font-size');
+	if(_f !== null){
+		_f = parseFloat(_f);
+		$content.css('font-size', _f);
+	}
+
+	// Cakephp flash message
+	/*
+	$("#flashMessage").slideDown();
+	setTimeout(function(){$("#flashMessage").slideUp();}, 3000);
+	*/
+
+
+});
+
+/**
+ * jQuery Cookie plugin
+ *
+ * Copyright (c) 2010 Klaus Hartl (stilbuero.de)
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ */
+jQuery.cookie = function (key, value, options) {
+
+	// key and at least value given, set cookie...
+	if (arguments.length > 1 && String(value) !== "[object Object]") {
+		options = jQuery.extend({}, options);
+
+		if (value === null || value === undefined) {
+			options.expires = -1;
+		}
+
+		if (typeof options.expires === 'number') {
+			var days = options.expires, t = options.expires = new Date();
+			t.setDate(t.getDate() + days);
+		}
+
+		value = String(value);
+
+		return (document.cookie = [
+			encodeURIComponent(key), '=',
+			options.raw ? value : encodeURIComponent(value),
+			options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+			options.path ? '; path=' + options.path : '',
+			options.domain ? '; domain=' + options.domain : '',
+			options.secure ? '; secure' : ''
+			].join(''));
+	}
+
+	// key and possibly options given, get cookie...
+	options = value || {};
+	var result, decode = options.raw ? function (s) {
+		return s;
+	} : decodeURIComponent;
+	return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
+};

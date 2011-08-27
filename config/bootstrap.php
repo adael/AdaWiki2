@@ -56,20 +56,20 @@ gentime();
  * Inflector::rules('plural', array('rules' => array(), 'irregular' => array(), 'uninflected' => array()));
  *
  */
+
+define('WIKI_PAGE_ID_PATTERN', '/[^a-z0-9\_\-ÁÉÍÓÚÜáéíóúüñÑ€\.]/i');
 function wiki_encode_title($title){
 	$title = str_replace(' ', '_', $title);
-	$title = preg_replace('/[^a-z0-9\_\-ÁÉÍÓÚÜáéíóúüñÑ€\.]/i', '', $title);
+	$title = preg_replace(WIKI_PAGE_ID_PATTERN, '', $title);
 	return $title;
 }
-
-
 
 /**
  * debug function
  */
-function prd(&$a){
+function prd(){
 	echo "<pre style='border: 1px solid black; padding: 3px; font-size: 11px; font-family: courier new; background: #EEE; color: #000;'>";
-	var_dump($a);
+	print_r(func_get_args());
 	echo "</pre>";
 	die();
 }
