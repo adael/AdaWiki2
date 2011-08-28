@@ -57,6 +57,13 @@ class WikiController extends AppController{
 	function edit(){
 		$alias = $this->_getNamed('alias');
 		$page = $this->Page->findByAlias($alias);
+
+		// Check content to prevent looping with index
+		if(!empty($page['Page']['locked']) && !empty($page['Page']['content'])){
+			$this->Session->setFlash(__('This page is locked', true));
+			$this->redirect("/wiki/index/alias:$alias");
+		}
+
 		if(!empty($this->data)){
 			$this->Page->create($page); // actually is not creating (cakephp bad syntax here)
 			// For security only sends the fields needed
@@ -91,6 +98,20 @@ class WikiController extends AppController{
 		}
 
 		$this->set('classes', $this->Menu->getClasses());
+	}
+
+	function lock(){
+		$alias = $this->_getNamed('alias');
+		$this->Page->setPageLock($alias, 1);
+		$this->Session->setFlash(__('The page has been locked', true));
+		$this->redirect("/wiki/index/alias:" . $alias);
+	}
+
+	function unlock(){
+		$alias = $this->_getNamed('alias');
+		$this->Page->setPageLock($alias, 0);
+		$this->Session->setFlash(__('The page has been unlocked', true));
+		$this->redirect("/wiki/index/alias:" . $alias);
 	}
 
 	function delete(){

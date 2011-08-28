@@ -70,16 +70,21 @@ if(!isset($this->params['named']['alias'])){
 					}
 					?>
 				</div>
-				<?php
-				echo $this->Html->link($this->Html->tag('span', __('Add menú', true)), '/wiki_menu/add', array(
-					'class' => 'wiki-fold-button wiki-fold-add',
-					'escape' => false,
-				));
-				echo $this->Html->link($this->Html->tag('span', __('Manage menú', true)), '/wiki_menu/index', array(
-					'class' => 'wiki-fold-button wiki-fold-manage',
-					'escape' => false,
-				));
-				?>
+
+				<div class="wiki-fold-menu">
+					<?php
+					echo $this->Html->link($this->Html->tag('span', __('Add menú', true)), '/wiki_menu/add', array(
+						'class' => 'wiki-fold-button wiki-fold-add',
+						'escape' => false,
+					));
+					echo $this->Html->link($this->Html->tag('span', __('Manage menú', true)), '/wiki_menu/index', array(
+						'class' => 'wiki-fold-button wiki-fold-manage',
+						'escape' => false,
+					));
+					?>
+					<br clear="all"/>
+				</div>
+
 				<div class="page-menu-credits">
 					<p>
 						<a href="http://www.cakephp.org" target="_blank">

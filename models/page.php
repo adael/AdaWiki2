@@ -37,5 +37,9 @@ class Page extends AppModel{
 		parent::beforeDelete($cascade);
 	}
 
+	function setPageLock($alias, $locked){
+		return $this->updateAll(compact('locked'), compact('alias'));
+	}
+
 }
 
