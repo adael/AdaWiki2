@@ -71,7 +71,8 @@ body {
 	font-family: "helvetica", "sans-serif";
 	font-size: 13px;
 	margin: 0; padding: 0;
-	background: #EBEBEB;
+	background-color:#EBEBEB;
+
 }
 
 .caption {
@@ -287,7 +288,7 @@ body {
 	-webkit-border-radius: 0 0 12px 12px
 }
 
-.page-content hr {
+hr {
     margin: 5px 0;
     height: 1px;
 	border: 0;
@@ -322,7 +323,6 @@ body {
 	margin: 3px 0;
 }
 
-
 .page-menu-credits a {
 	color: #999;
 	text-decoration: none;
@@ -336,53 +336,54 @@ body {
 	float: right;
 }
 
-.wiki-edit-button {
-	float: right;
-	padding-top: 16px;
-	min-width: 16px;
-	margin-top: -38px;
-	margin-right: 16px;
-	background: transparent url('../img/icons/axialis/web20/rounded/Green/16x16/Write.png') no-repeat top right;
-	color: #4ca83d;
-	text-decoration: none;
-	opacity: 0.3;
+.wiki-page-buttons {
+	position: absolute;
+	top: 0; right: 4px;
 }
 
-.wiki-edit-button:hover {
-	opacity: 1;
-}
-
-.wiki-edit-button span {
-	display: none;
-}
-
-.wiki-edit-button:hover span {
-	display: block;
-	margin-top: 4px;
-}
-
-.wiki-add-menu {
-	float: right;
-	height: 16px;
-	padding-right: 20px;
+.wiki-fold-button {
+	float: right; clear: both;
 	margin-top: 4px;
 	margin-right: 4px;
-	background: transparent url(../img/icons/axialis/web20/rounded/Green/16x16/Plus.png) no-repeat right center;
+	text-align: right;
+	height: 16px;
+	padding-right: 20px;
+	background: transparent none no-repeat center right;
 	color: #4ca83d;
 	text-decoration: none;
-	opacity: 0.3;
+	opacity: 0.2;
 }
 
-.wiki-add-menu:hover {
+.wiki-fold-button:hover {
 	opacity: 1;
 }
 
-.wiki-add-menu span {
+.wiki-fold-button span {
 	display: none;
 }
 
-.wiki-add-menu:hover span {
+.wiki-fold-button:hover span {
 	display: inline;
+}
+
+.wiki-fold-edit {
+	background-image: url('../img/icons/axialis/web20/rounded/Green/16x16/Write.png');
+}
+
+.wiki-fold-add {
+	background-image: url(../img/icons/axialis/web20/rounded/Green/16x16/Plus.png);
+}
+
+.wiki-fold-manage {
+	background-image: url(../img/icons/axialis/web20/rounded/Green/16x16/Table.png);
+}
+
+.wiki-fold-print {
+	background-image: url(../img/icons/axialis/web20/16x16/Green/Printer.png);
+}
+.wiki-fold-delete {
+	background-image: url(../img/icons/axialis/web20/16x16/Green/Trash.png);
+	color: #AA0000;
 }
 
 .wiki-print-page {

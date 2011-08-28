@@ -1,0 +1,445 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2011-08-28 19:14+0200\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: \controllers\wiki_controller.php:102
+msgid "Page not found"
+msgstr ""
+
+#: \controllers\wiki_menu_controller.php:31
+msgid "The menu has been saved"
+msgstr ""
+
+#: \models\menu.php:13
+msgid "Invalid id"
+msgstr ""
+
+#: \models\menu.php:19
+msgid "Title is required"
+msgstr ""
+
+#: \models\menu.php:25
+msgid "Link is required"
+msgstr ""
+
+#: \models\menu.php:31
+msgid "Invalid link type"
+msgstr ""
+
+#: \models\menu.php:35
+msgid "Invalid order"
+msgstr ""
+
+#: \models\menu.php:39
+msgid "Invalid class type"
+msgstr ""
+
+#: \models\menu.php:59
+msgid "None"
+msgstr ""
+
+#: \models\menu.php:60
+msgid "Silver"
+msgstr ""
+
+#: \models\menu.php:61
+msgid "Blue"
+msgstr ""
+
+#: \models\menu.php:62
+msgid "Gold"
+msgstr ""
+
+#: \models\menu.php:63
+msgid "Green"
+msgstr ""
+
+#: \models\menu.php:64
+msgid "Red"
+msgstr ""
+
+#: \models\menu.php:65
+msgid "Pink"
+msgstr ""
+
+#: \models\menu.php:74
+msgid "Page"
+msgstr ""
+
+#: \models\menu.php:75
+msgid "Internal"
+msgstr ""
+
+#: \models\menu.php:76
+msgid "External"
+msgstr ""
+
+#: \models\page.php:14
+msgid "Title cannot be empty"
+msgstr ""
+
+#: \views\layouts\wiki.ctp:60
+msgid "Add menú"
+msgstr ""
+
+#: \views\layouts\wiki.ctp:70;74
+msgid "Powered by CakePHP"
+msgstr ""
+
+#: \views\layouts\wiki.ctp:89
+msgid "Powered by Lesscss"
+msgstr ""
+
+#: \views\layouts\wiki.ctp:106
+msgid "Print this page"
+msgstr ""
+
+#: \views\layouts\wiki.ctp:110
+msgid "Font:"
+msgstr ""
+
+#: \views\layouts\wiki.ctp:111
+msgid "Normal"
+msgstr ""
+
+#: \views\layouts\wiki.ctp:116
+msgid "AdaWiki2 by "
+msgstr ""
+
+#: \views\wiki\edit.ctp:24
+#: \views\wiki_menu\edit.ctp:11
+#: \views\wiki_menu\index.ctp:23
+msgid "Title"
+msgstr ""
+
+#: \views\wiki\edit.ctp:31
+msgid "Content"
+msgstr ""
+
+#: \views\wiki\edit.ctp:41
+msgid "Pin in site menu"
+msgstr ""
+
+#: \views\wiki\edit.ctp:46
+msgid "Menu style"
+msgstr ""
+
+#: \views\wiki\edit.ctp:54
+#: \views\wiki_menu\edit.ctp:29
+msgid "Save"
+msgstr ""
+
+#: \views\wiki\index.ctp:14
+msgid "Edit this page"
+msgstr ""
+
+#: \views\wiki\index.ctp:40
+msgid "Word count: %s."
+msgstr ""
+
+#: \views\wiki\index.ctp:41
+msgid "Size: %s. Last modified %s"
+msgstr ""
+
+#: \views\wiki_menu\edit.ctp:17
+msgid "Alias or link"
+msgstr ""
+
+#: \views\wiki_menu\edit.ctp:21
+#: \views\wiki_menu\index.ctp:25
+msgid "Link type"
+msgstr ""
+
+#: \views\wiki_menu\edit.ctp:22
+msgid "Page: Alias for wiki page (invalid chars will be removed). Internal: for controllers or plugins. External: for links to other sites."
+msgstr ""
+
+#: \views\wiki_menu\edit.ctp:26
+msgid "Style"
+msgstr ""
+
+#: \views\wiki_menu\index.ctp:18
+msgid "Manage menus"
+msgstr ""
+
+#: \views\wiki_menu\index.ctp:24
+msgid "Link"
+msgstr ""
+
+#: \views\wiki_menu\index.ctp:26
+msgid "Order"
+msgstr ""
+
+#: \views\wiki_menu\index.ctp:27
+msgid "Class"
+msgstr ""
+
+#: \views\wiki_menu\index.ctp:28
+msgid "Actions"
+msgstr ""
+
+#: \webroot\test.php:88
+msgid "Debug setting does not allow access to this url."
+msgstr ""
+
+#: \plugins\debug_kit\controllers\components\toolbar.php:107
+msgid "Component initialization"
+msgstr ""
+
+#: \plugins\debug_kit\controllers\components\toolbar.php:108
+msgid "Component initialization and startup"
+msgstr ""
+
+#: \plugins\debug_kit\controllers\components\toolbar.php:180
+msgid "Controller action"
+msgstr ""
+
+#: \plugins\debug_kit\controllers\components\toolbar.php:181
+msgid "Controller action start"
+msgstr ""
+
+#: \plugins\debug_kit\controllers\components\toolbar.php:214
+msgid "Render Controller Action"
+msgstr ""
+
+#: \plugins\debug_kit\controllers\components\toolbar.php:215
+msgid "Controller render start"
+msgstr ""
+
+#: \plugins\debug_kit\controllers\components\toolbar.php:285
+msgid "Could not load DebugToolbar panel %s"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\debug_kit_debugger.php:185
+msgid "Core Processing (Derived)"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\fire_cake.php:301
+msgid "Headers already sent in %s on line %s. Cannot send log data to FirePHP."
+msgstr ""
+
+#: \plugins\debug_kit\vendors\fire_cake.php:322
+msgid "Incorrect parameter count for FireCake::fb()"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\fire_cake.php:401
+msgid "Maximum number (99,999) of messages reached!"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:50
+msgid "-> Testing :url"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:76
+msgid "Total Requests made: :requests"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:77
+msgid "Total Time elapsed: :duration (seconds)"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:81
+msgid "Requests/Second: :rps req/sec"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:85
+msgid "Average request time: :average-time seconds"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:89
+msgid "Standard deviation of average request time: :std-dev"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:93
+msgid "Longest/shortest request: :longest sec/:shortest sec"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:145
+msgid "DebugKit Benchmark Shell"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:147
+msgid "\tAllows you to obtain some rough benchmarking statistics \n\tabout a fully qualified URL."
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:149
+msgid "\tUse:"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:150
+msgid "\t\tcake benchmark [-n iterations] [-t timeout] url"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:152
+msgid "\tParams:"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:153
+msgid "\t\t-n Number of iterations to perform. Defaults to 10. \n\t\t   Must be an integer."
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:154
+msgid "\t\t-t Maximum total time for all iterations, in seconds. \n\t\t   Defaults to 100. Must be an integer."
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:156
+msgid "\tIf a single iteration takes more than the \n\ttimeout specified, only one request will be made."
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:158
+msgid "\tExample Use:"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:159
+msgid "\t\tcake benchmark -n 10 -t 100 http://localhost/testsite"
+msgstr ""
+
+#: \plugins\debug_kit\vendors\shells\benchmark.php:161
+msgid "\tNote that this benchmark does not include browser render time"
+msgstr ""
+
+#: \plugins\debug_kit\views\debug.php:41
+msgid "Rendering %s"
+msgstr ""
+
+#: \plugins\debug_kit\views\debug.php:63
+msgid "Starting to render"
+msgstr ""
+
+#: \plugins\debug_kit\views\debug.php:67
+msgid "Finished"
+msgstr ""
+
+#: \plugins\debug_kit\views\debug.php:83
+msgid "Rendering View"
+msgstr ""
+
+#: \plugins\debug_kit\views\debug.php:89
+msgid "View render complete"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\debug_toolbar.ctp:25
+msgid "There are no active panels. You must enable a panel to see its output."
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\history_panel.ctp:21
+msgid "Request History"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\history_panel.ctp:23
+msgid "No previous requests logged."
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\history_panel.ctp:25
+msgid "previous requests available"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\history_panel.ctp:27
+msgid "Restore to current request"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\log_panel.ctp:21
+msgid "Logs"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\log_panel.ctp:28
+msgid "Time"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\log_panel.ctp:28
+#: \plugins\debug_kit\views\elements\timer_panel.ctp:40;64
+msgid "Message"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\log_panel.ctp:37
+msgid "There were no log entries made this request"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\request_panel.ctp:21
+msgid "Request"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\request_panel.ctp:35
+msgid "Current Route"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\session_panel.ctp:21
+msgid "Session"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\sql_log_panel.ctp:25
+msgid "Sql Logs"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\sql_log_panel.ctp:40
+msgid "Query Explain:"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\sql_log_panel.ctp:43
+msgid "Click an \"Explain\" link above, to see the query explanation."
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\sql_log_panel.ctp:48
+msgid "No active database connections"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\timer_panel.ctp:33
+msgid "Memory"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\timer_panel.ctp:36
+msgid "Peak Memory Use"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\timer_panel.ctp:40
+msgid "Memory use"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\timer_panel.ctp:53
+msgid "Timers"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\timer_panel.ctp:55
+msgid "%s (ms)"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\timer_panel.ctp:56
+msgid "Total Request Time:"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\timer_panel.ctp:65
+msgid "Time in ms"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\timer_panel.ctp:66
+msgid "Graph"
+msgstr ""
+
+#: \plugins\debug_kit\views\elements\variables_panel.ctp:21
+msgid "View Variables"
+msgstr ""
+
+#: \plugins\debug_kit\views\helpers\html_toolbar.php:184
+msgid "Explain"
+msgstr ""
+
+#: \plugins\debug_kit\views\helpers\simple_graph.php:77
+msgid "Starting %sms into the request, taking %sms"
+msgstr ""
+
+#: \plugins\debug_kit\views\helpers\toolbar.php:162
+msgid "maybe slow"
+msgstr ""
+

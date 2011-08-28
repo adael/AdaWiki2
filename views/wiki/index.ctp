@@ -1,3 +1,15 @@
+<div class="wiki-page-buttons">
+	<?
+	echo $this->Html->link($this->Html->tag('span', __('Edit this page', true)), '/wiki/edit/alias:' . $this->params['named']['alias'], array(
+		'class' => 'wiki-fold-button wiki-fold-edit',
+		'escape' => false,
+	));
+	echo $this->Html->link($this->Html->tag('span', __('Delete this page', true)), '/wiki/edit/alias:' . $this->params['named']['alias'], array(
+		'class' => 'wiki-fold-button wiki-fold-delete',
+		'escape' => false,
+	));
+	?>
+</div>
 <div class="content-body">
 	<?php
 	if(!isset($title) && isset($page['title'])){
@@ -11,10 +23,6 @@
 	if(!empty($title)){
 		echo "<div class='content-header'>";
 		echo "<h1 class='caption'>{$title}</h1>";
-		echo $this->Html->link($this->Html->tag('span', __('Edit this page', true)), '/wiki/edit/alias:' . $this->params['named']['alias'], array(
-			'class' => 'wiki-edit-button',
-			'escape' => false,
-		));
 		echo "</div>";
 	}
 

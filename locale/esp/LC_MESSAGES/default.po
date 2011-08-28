@@ -4,62 +4,205 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AdaWiki2\n"
-"POT-Creation-Date: 2011-08-27 04:01+0200\n"
-"PO-Revision-Date: 2011-08-27 04:08+0100\n"
+"POT-Creation-Date: 2011-08-28 19:24+0200\n"
+"PO-Revision-Date: 2011-08-28 19:25+0100\n"
 "Last-Translator: Carlos Gant <adaelxp@gmail.com>\n"
 "Language-Team: Carlos Gant <adaelxp@gmail.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Spanish\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: \views\layouts\wiki.ctp:31;34
+#: \controllers\wiki_controller.php:102
+msgid "Page not found"
+msgstr "Página no encontrada"
+
+#: \controllers\wiki_menu_controller.php:31
+msgid "The menu has been saved"
+msgstr "El menú ha sido guardado"
+
+#: \models\menu.php:13
+msgid "Invalid id"
+msgstr "Id. no válido"
+
+#: \models\menu.php:19
+msgid "Title is required"
+msgstr "El titulo es obligatorio"
+
+#: \models\menu.php:25
+msgid "Link is required"
+msgstr "El enlace es obligatorio"
+
+#: \models\menu.php:31
+msgid "Invalid link type"
+msgstr "Tipo de enlace no válido"
+
+#: \models\menu.php:35
+msgid "Invalid order"
+msgstr "Orden no válido"
+
+#: \models\menu.php:39
+msgid "Invalid class type"
+msgstr "Tipo de clase no válido"
+
+#: \models\menu.php:59
+msgid "None"
+msgstr "Ninguno"
+
+#: \models\menu.php:60
+#, fuzzy
+msgid "Silver"
+msgstr "Guardar"
+
+#: \models\menu.php:61
+msgid "Blue"
+msgstr "Azul"
+
+#: \models\menu.php:62
+msgid "Gold"
+msgstr "Dorado"
+
+#: \models\menu.php:63
+msgid "Green"
+msgstr "Verde"
+
+#: \models\menu.php:64
+msgid "Red"
+msgstr "Rojo"
+
+#: \models\menu.php:65
+#, fuzzy
+msgid "Pink"
+msgstr "Imprimir"
+
+#: \models\menu.php:74
+msgid "Page"
+msgstr "Página"
+
+#: \models\menu.php:75
+msgid "Internal"
+msgstr "Interno"
+
+#: \models\menu.php:76
+msgid "External"
+msgstr "Externo"
+
+#: \models\page.php:14
+msgid "Title cannot be empty"
+msgstr "El título no puede estar vacío"
+
+#: \views\layouts\wiki.ctp:60
+msgid "Add menú"
+msgstr "Agregar menú"
+
+#: \views\layouts\wiki.ctp:70;74
 msgid "Powered by CakePHP"
 msgstr "Powered by CakePHP"
 
-#: \views\layouts\wiki.ctp:49
-msgid "Print"
-msgstr "Imprimir"
+#: \views\layouts\wiki.ctp:89
+#, fuzzy
+msgid "Powered by Lesscss"
+msgstr "Powered by CakePHP"
 
-#: \views\layouts\wiki.ctp:52
+#: \views\layouts\wiki.ctp:106
+#, fuzzy
+msgid "Print this page"
+msgstr "Editar esta página"
+
+#: \views\layouts\wiki.ctp:110
 msgid "Font:"
 msgstr "Fuente:"
 
-#: \views\layouts\wiki.ctp:56
+#: \views\layouts\wiki.ctp:111
 msgid "Normal"
 msgstr "Normal"
 
-#: \views\layouts\wiki.ctp:59
+#: \views\layouts\wiki.ctp:116
 msgid "AdaWiki2 by "
 msgstr "AdaWiki2 por"
 
-#: \views\wiki\edit.ctp:21
+#: \views\wiki\edit.ctp:24
+#: \views\wiki_menu\edit.ctp:11
+#: \views\wiki_menu\index.ctp:23
 msgid "Title"
 msgstr "Título"
 
-#: \views\wiki\edit.ctp:27
+#: \views\wiki\edit.ctp:31
 msgid "Content"
 msgstr "Contenido"
 
-#: \views\wiki\edit.ctp:33
+#: \views\wiki\edit.ctp:41
+msgid "Pin in site menu"
+msgstr "Fijar en el menú"
+
+#: \views\wiki\edit.ctp:46
+msgid "Menu style"
+msgstr "Estilo del menú"
+
+#: \views\wiki\edit.ctp:54
+#: \views\wiki_menu\edit.ctp:29
 msgid "Save"
 msgstr "Guardar"
 
-#: \views\wiki\index.ctp:16
+#: \views\wiki\index.ctp:14
 msgid "Edit this page"
 msgstr "Editar esta página"
 
-#: \views\wiki\index.ctp:55
+#: \views\wiki\index.ctp:40
 msgid "Word count: %s."
 msgstr "Número de palabras: %s."
 
-#: \views\wiki\index.ctp:56
+#: \views\wiki\index.ctp:41
 msgid "Size: %s. Last modified %s"
 msgstr "Tamaño: %s. Última modificación %s"
+
+#: \views\wiki_menu\edit.ctp:17
+msgid "Alias or link"
+msgstr "Enlace o alias"
+
+#: \views\wiki_menu\edit.ctp:21
+#: \views\wiki_menu\index.ctp:25
+msgid "Link type"
+msgstr "Tipo de enlace"
+
+#: \views\wiki_menu\edit.ctp:22
+msgid "Page: Alias for wiki page (invalid chars will be removed). Internal: for controllers or plugins. External: for links to other sites."
+msgstr ""
+
+#: \views\wiki_menu\edit.ctp:26
+#, fuzzy
+msgid "Style"
+msgstr "Título"
+
+#: \views\wiki_menu\index.ctp:18
+msgid "Manage menus"
+msgstr "Gestionar menús"
+
+#: \views\wiki_menu\index.ctp:24
+msgid "Link"
+msgstr "Enlace"
+
+#: \views\wiki_menu\index.ctp:26
+msgid "Order"
+msgstr "Orden"
+
+#: \views\wiki_menu\index.ctp:27
+msgid "Class"
+msgstr "Clase"
+
+#: \views\wiki_menu\index.ctp:28
+msgid "Actions"
+msgstr "Acciones"
 
 #: \webroot\test.php:88
 msgid "Debug setting does not allow access to this url."
 msgstr "La configuración de depuración no permite el acceso a esta URL."
 
+#, fuzzy
+#~ msgid "Time"
+#~ msgstr "Título"
+
+#~ msgid "maybe slow"
+#~ msgstr "Puede ser lento"
