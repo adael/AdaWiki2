@@ -1,13 +1,5 @@
 <?php
 
-function gentime() {
-    static $a;
-    if($a == 0) $a = microtime(true);
-    else return (string)(microtime(true)-$a);
-}
-
-gentime();
-
 /**
  * This file is loaded automatically by the app/webroot/index.php file after the core bootstrap.php
  *
@@ -56,22 +48,78 @@ gentime();
  * Inflector::rules('plural', array('rules' => array(), 'irregular' => array(), 'uninflected' => array()));
  *
  */
+/*
+ * DEBUG FUNCTIONS
+ */
 
-define('WIKI_PAGE_ID_PATTERN', '/[^a-z0-9\_\-ÁÉÍÓÚÜáéíóúüñÑ€\.]/i');
-function wiki_encode_title($title){
-	$title = str_replace(' ', '_', $title);
-	$title = preg_replace(WIKI_PAGE_ID_PATTERN, '', $title);
-	return $title;
+function gentime(){
+	static $a;
+	if($a == 0)
+		$a = microtime(true);
+	else
+		return (string) (microtime(true) - $a);
+}
+
+gentime();
+
+/**
+ * Print last DB query
+ */
+function pq(){
+	$cm = ConnectionManager::getInstance();
+	$dbo = reset($cm->_dataSources);
+	$log = $dbo->_queriesLog;
+	$query = end($log);
+	//$query['query'] = self::format_query($query['query']);
+	echo "<pre>";
+	print_r($query);
+	echo "</pre>";
+}
+
+/**
+ * For profiling
+ */
+function profile(){
+	echo "<pre>";
+	print_r(array(
+		sprintf("PEAK: %s", format_bytes(memory_get_peak_usage())),
+		sprintf("PEAK: %s", format_bytes(memory_get_usage())),
+		sprintf("TIME: %.2fms", gentime()),
+	));
+	echo "</pre>";
+	die();
 }
 
 /**
  * debug function
  */
 function prd(){
+	header('content-type: text/html; charset=utf8');
 	echo "<pre style='border: 1px solid black; padding: 3px; font-size: 11px; font-family: courier new; background: #EEE; color: #000;'>";
 	print_r(func_get_args());
 	echo "</pre>";
 	die();
+}
+
+/*
+ * APP WIDE FUNCTIONS
+ */
+
+/**
+ * Allowed chars can be changed, but not recommended
+ * For french or cyrilic characters, simply add
+ */
+define('WIKI_PAGE_ALIAS_ALLOWED_CHARS', 'A-Za-z0-9' . preg_quote('_-ÁÉÍÓÚÜáéíóúüñÑ€$%. '));
+
+/**
+ * Prepare the alias for wiki pages
+ * @param string $alias
+ * @return string
+ */
+function wiki_encode_alias($alias){
+	$alias = str_replace(' ', '_', $alias);
+	$alias = preg_replace('/[^' . WIKI_PAGE_ALIAS_ALLOWED_CHARS . ']/', '', $alias);
+	return substr($alias, 0, 250);
 }
 
 function format_bytes($bytes, $output = 'text'){
@@ -118,27 +166,4 @@ function str_word_count_utf8($string, $format = 0){
 			return $result;
 	}
 	return preg_match_all(WORD_COUNT_MASK, $string, $matches);
-}
-
-// Imprime el último query
-function pq($query = null){
-	$cm = ConnectionManager::getInstance();
-	$dbo = reset($cm->_dataSources);
-	$log = $dbo->_queriesLog;
-	$query = end($log);
-	//$query['query'] = self::format_query($query['query']);
-	echo "<pre>";
-	print_r($query);
-	echo "</pre>";
-}
-
-function profile(){
-	echo "<pre>";
-	print_r(array(
-		sprintf("PEAK: %s", format_bytes(memory_get_peak_usage())),
-		sprintf("PEAK: %s", format_bytes(memory_get_usage())),
-		sprintf("TIME: %.2fms", gentime()),
-	));
-	echo "</pre>";
-	die();
 }

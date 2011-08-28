@@ -2,6 +2,8 @@
 
 class AppController extends Controller{
 
+	var $components = array('Session', 'DebugKit.Toolbar');
+
 	function _checkNamed($k){
 		return!empty($this->params['named'][$k]);
 	}

@@ -2,17 +2,23 @@
 
 class Page extends AppModel{
 
-	var $validates = array(
-		'alias' => array(
-			'rule' => WIKI_PAGE_ID_PATTERN,
-			'message' => 'Page title must be alphanumeric'
-		),
-	);
-
 	function beforeValidate($options = array()){
+
+		$this->validate = array(
+			'alias' => array(
+				'rule' => '/^[' . WIKI_PAGE_ALIAS_ALLOWED_CHARS . ']+$/',
+				'message' => 'Invalid page alias',
+			),
+			'title' => array(
+				'rule' => 'notEmpty',
+				'message' => __('Title cannot be empty', true),
+			),
+		);
+
 		if(!empty($this->data[$this->alias]['alias'])){
-			$this->set('alias', wiki_encode_title($this->data[$this->alias]['alias']));
+			$this->set('alias', wiki_encode_alias($this->data[$this->alias]['alias']));
 		}
+
 		return parent::beforeValidate($options);
 	}
 

@@ -196,6 +196,7 @@ body {
 	display: block;
 	background: #FFF;
 	margin: 5px auto;
+	margin-bottom: 0;
 	color: #333;
 	padding: 3px;
 }
@@ -212,6 +213,7 @@ body {
 	font-size: 1.3em;
 	padding: 3px;
 	color: #333;
+	margin-bottom: 0;
 }
 
 .big-form .markItUp  {
@@ -358,4 +360,27 @@ body {
 	z-index: 1;
 	.border-radius (0 0 15px 15px);
 	.menuitem(#d8eaf3);
+}
+
+.big-form div.input {
+	clear: both;
+}
+
+.big-form div.input .error-message {
+	color: #AA0000;
+	float: right; clear: both;
+	margin-left: 10px;
+	background: #FFAAAA;
+	border: 1px solid #990000;
+	border-top: 0;
+	padding: 5px;
+	.border-radius(0 0 5px 5px);
+}
+
+.big-form div.select .error-message {
+	float: none;
+	border: 1px solid #990000;
+	display: block;
+	.border-radius(5px);
+	margin: 3px;
 }

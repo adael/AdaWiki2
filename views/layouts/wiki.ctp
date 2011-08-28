@@ -1,3 +1,9 @@
+<?php
+// ensure current page alias is in named
+if(!isset($this->params['named']['alias'])){
+	$this->params['named']['alias'] = '';
+}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,10 +27,9 @@
 				<div class="main-menu">
 					<?php
 					if(!empty($mainmenu)){
-						$_current_page_id = isset($this->params['named']['id']) ? $this->params['named']['id'] : null;
 						foreach($mainmenu as $_menuitem){
 							echo $this->Html->link($_menuitem['Menu']['title'], "/wiki/index/alias:{$_menuitem['Menu']['link']}", array(
-								'class' => $_menuitem['Menu']['class'] . ($_menuitem['Menu']['link'] == $_current_page_id ? ' active' : ''),
+								'class' => $_menuitem['Menu']['class'] . ($_menuitem['Menu']['link'] == $this->params['named']['alias'] ? ' active' : ''),
 							));
 						}
 					}

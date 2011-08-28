@@ -18,31 +18,13 @@
 		echo "</div>";
 	}
 
-
 	if(!empty($content)){
-
-		$markdown = app::import('vendor', 'markdown/markdown');
-
-		$patterns = array();
-
-		// Enlace externo con alias
-		$patterns['/\[(.+)\|(http\:\/\/[^\]]+)\]/iU'] = "<a href=\"\\2\" target='_blank'>\\1</a>";
-
-		// Proceso los enlaces externos [http:://enlace]
-		$patterns['/\[(http\:\/\/[^\]]+)\]/iU'] = "<a href=\"\\1\" target='_blank'>\\1</a>";
-
-		// Enlace interno normal
-		foreach($patterns as $pat => $rep){
-			$content = preg_replace($pat, $rep, $content);
-		}
-
-		// Los enlaces internos
-		$pat = '/\[(?!http\:\/\/)([^\]]+)\]/iU';
+		// Internal links
+		$pat = '/\[([' . WIKI_PAGE_ALIAS_ALLOWED_CHARS . ']+)\]/iU';
 		$content = preg_replace_callback($pat, function($matches) use (&$html){
-					/* @var $html HtmlHelper */
-					return $html->link($matches[1], "/wiki/index/alias:" . wiki_encode_title($matches[1]));
+					return $html->link($matches[1], "/wiki/index/alias:" . wiki_encode_alias($matches[1]));
 				}, $content);
-
+		app::import('vendor', 'markdown/markdown');
 		echo Markdown($content);
 	}
 	?>

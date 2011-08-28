@@ -61,22 +61,27 @@ class WikiController extends AppController{
 		$page = $this->Page->find('first', array('conditions' => array('alias' => $this->_getNamed('alias'))));
 		if(!empty($this->data)){
 			$this->Page->create($page); // actually is not creating (cakephp bad syntax here)
-			$this->Page->set('alias', $alias); // if page not found, set current $alias
-			$this->Page->set($this->data);
+			// For security only sends the fields needed
+			$this->Page->set(array(
+				'alias' => $alias,
+				'title' => $this->data['Page']['title'],
+				'content' => &$this->data['Page']['content'],
+			));
 			$success = $this->Page->save();
 			if($success){
-				$this->data = $success;
 				if(!empty($this->data['Menu']['pin'])){
-					$this->Menu->create($this->data['Menu']);
+					$this->Menu->create();
 					$this->Menu->set(array(
-						'title' => $this->data['Page']['title'],
-						'link' => $this->data['Page']['alias'],
+						'id' => $this->data['Menu']['id'],
+						'title' => $success['Page']['title'],
+						'link' => $success['Page']['alias'],
+						'class' => $this->data['Menu']['class'],
 					));
 					$this->Menu->save();
 				}elseif(!empty($this->data['Menu']['id'])){
 					$this->Menu->delete($this->data['Menu']['id']);
 				}
-				$this->Session->setFlash("Saved");
+				$this->Session->setFlash("The page has been saved");
 				$this->redirect(array('action' => 'index', 'alias' => $alias));
 			}
 		}
@@ -89,13 +94,6 @@ class WikiController extends AppController{
 		}
 
 		$this->set('classes', $this->Menu->getClasses());
-	}
-
-	function admin(){
-		$this->paginate = array(
-			'limit' => 20,
-		);
-		$this->data = $this->paginate();
 	}
 
 	function delete(){

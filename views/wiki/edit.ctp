@@ -17,11 +17,14 @@ echo $form->create(null, array(
 	'class' => 'big-form',
 ));
 
+echo $form->error('id');
+echo $form->error('alias');
+
 echo $form->input('title', array(
 	'label' => __('Title', true),
 	'class' => 'caption',
 	'size' => 50,
-	'default' => $this->params['named']['alias'],
+	'default' => ucfirst(str_replace('_', ' ', $this->params['named']['alias'])),
 ));
 
 echo $form->input('content', array(
@@ -33,6 +36,7 @@ echo $form->input('content', array(
 ));
 
 echo $form->hidden('Menu.id');
+
 echo $form->input('Menu.pin', array(
 	'label' => __('Pin in site menu', true),
 	'type' => 'checkbox',
