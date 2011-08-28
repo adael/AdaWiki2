@@ -14,6 +14,7 @@ class WikiMenuController extends AppController{
 	}
 
 	function index(){
+		$this->helpers[] = 'WikiDatagrid';
 		$this->set('items', $this->paginate('Menu'));
 	}
 

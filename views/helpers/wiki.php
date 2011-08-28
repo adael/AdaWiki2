@@ -45,4 +45,5 @@ class WikiHelper extends AppHelper{
 		return $this->Html->link($matches[1], "/wiki/index/alias:" . wiki_encode_alias($matches[1]));
 	}
 
+
 }
