@@ -1,51 +1,46 @@
-<div class="wiki-page-buttons">
-	<?
-	echo $this->Html->link($this->Html->tag('span', __('Edit this page', true)), '/wiki/edit/alias:' . $this->params['named']['alias'], array(
-		'class' => 'wiki-fold-button wiki-fold-edit',
-		'escape' => false,
-	));
-	echo $this->Html->link($this->Html->tag('span', __('Delete this page', true)), '/wiki/edit/alias:' . $this->params['named']['alias'], array(
-		'class' => 'wiki-fold-button wiki-fold-delete',
-		'escape' => false,
-	));
-	?>
-</div>
-<div class="content-body">
-	<?php
-	if(!isset($title) && isset($page['title'])){
-		$title = $page['title'];
-	}
-
-	if(!isset($content) && isset($page['content'])){
-		$content = & $page['content'];
-	}
-
-	if(!empty($title)){
-		echo "<div class='content-header'>";
-		echo "<h1 class='caption'>{$title}</h1>";
-		echo "</div>";
-	}
-
-	if(!empty($content)){
-		// Internal links
-		$pat = '/\[([' . WIKI_PAGE_ALIAS_ALLOWED_CHARS . ']+)\]/iU';
-		$content = preg_replace_callback($pat, function($matches) use (&$html){
-					return $html->link($matches[1], "/wiki/index/alias:" . wiki_encode_alias($matches[1]));
-				}, $content);
-		app::import('vendor', 'markdown/markdown');
-		echo Markdown($content);
-	}
-	?>
-</div>
-
 <?php
-if(!empty($page)){
-	echo "<hr/>";
-	echo "<div class='content-footer'>";
-	$modified = strtotime($page['modified']);
-	$bytes = format_bytes($page['content_length'], 'array');
+extract($page['Page'], EXTR_REFS);
+?>
+<div class="wiki-page-buttons wiki-fold-menu">
+	<?php
+	if(!$locked){
+		echo $this->Html->link($this->Html->tag('span', __('Edit this page', true)), '/wiki/edit/alias:' . $alias, array(
+			'class' => 'wiki-fold-button wiki-fold-edit',
+			'escape' => false,
+		));
+		echo $this->Html->link($this->Html->tag('span', __('Lock page', true)), '/wiki/lock/alias:' . $alias, array(
+			'class' => 'wiki-fold-button wiki-fold-lock',
+			'escape' => false,
+		));
+		echo $this->Html->link($this->Html->tag('span', __('Delete this page', true)), '/wiki/edit/alias:' . $alias, array(
+			'class' => 'wiki-fold-button wiki-fold-delete',
+			'escape' => false,
+		));
+	}else{
+		echo $this->Html->link($this->Html->tag('span', __('Unlock page', true)), '/wiki/unlock/alias:' . $alias, array(
+			'class' => 'wiki-fold-button wiki-fold-unlock',
+			'escape' => false,
+		));
+	}
+	?>
+	<br clear="all"/>
+</div>
+
+<div class="content-body">
+	<div class='content-header'>
+		<h1 class='caption'><?php echo $title ?></h1>
+	</div>
+	<?php
+	$this->Wiki->render_content($content);
+	?>
+</div>
+
+<hr/>
+<div class='content-footer'>
+	<?php
+	$bytes = format_bytes($content_length, 'array');
 	$bytes = $bytes['rounded'] . "<b>" . $bytes['unit'] . "</b>";
-	printf(__('Word count: %s.', true), $page['content_numwords']);
-	printf(__('Size: %s. Last modified %s', true), $bytes, strftime("%c", $modified));
-	echo "</div>";
-}
+	printf(__('Word count: %s.', true), $content_numwords);
+	printf(__('Size: %s. Last modified %s', true), $bytes, strftime("%c", strtotime($modified)));
+	?>
+</div>

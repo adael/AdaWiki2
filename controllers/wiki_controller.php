@@ -7,7 +7,6 @@ class WikiController extends AppController{
 	var $layout = "wiki";
 
 	/**
-	 *
 	 * @var Page
 	 */
 	var $Page;
@@ -22,42 +21,42 @@ class WikiController extends AppController{
 	function beforeRender(){
 		$menus = $this->Menu->find('all', array(
 			'fields' => array('title', 'link', 'link_type', 'class'),
-			'order' => 'order',
-				));
+			'order' => 'order'));
 		$this->set('mainmenu', $menus);
 	}
 
 	function index(){
 		$alias = $this->_getNamed('alias');
-		$page = $this->Page->find('first', array('conditions' => array('alias' => $this->_getNamed('alias'))));
-		if(!empty($page)){
-			$page = $page[$this->Page->alias];
-		}
-
-		if(empty($page['content'])){
+		$page = $this->Page->findByAlias($alias);
+		if(!$page || empty($page['Page']['content'])){
 			$this->redirect(array('action' => 'edit', 'alias' => $alias));
 		}
-
-		if($this->_checkNamed('print')){
-			$this->layout = 'print';
-			$this->set(array(
-				'content' => $page['content'],
-				'title' => $page['title'],
-			));
-		}else{
-			$this->set('page', $page);
-		}
+		$this->helpers[] = 'Wiki';
+		$this->set('page', $page);
 	}
 
 	function preview(){
+		$this->helpers[] = 'Wiki';
 		$this->layout = 'print';
 		$this->set('content', $this->data);
-		$this->render('index');
+	}
+
+	function printView(){
+		$alias = $this->_getNamed('alias');
+		$page = $this->Page->findByAlias($alias);
+		if(!$page){
+			$this->redirect('/');
+		}
+		$this->set(array(
+			'content' => $page['Page']['content'],
+			'title' => $page['Page']['title'],
+		));
+		$this->layout = 'print';
 	}
 
 	function edit(){
 		$alias = $this->_getNamed('alias');
-		$page = $this->Page->find('first', array('conditions' => array('alias' => $this->_getNamed('alias'))));
+		$page = $this->Page->findByAlias($alias);
 		if(!empty($this->data)){
 			$this->Page->create($page); // actually is not creating (cakephp bad syntax here)
 			// For security only sends the fields needed
@@ -85,7 +84,6 @@ class WikiController extends AppController{
 			}
 		}
 		$this->data = $page;
-
 		$menuAssociated = $this->Menu->find('first', array('conditions' => array('link' => $alias, 'link_type' => 'page')));
 		if(!empty($menuAssociated)){
 			$this->data['Menu'] = $menuAssociated['Menu'];
@@ -97,8 +95,8 @@ class WikiController extends AppController{
 
 	function delete(){
 		$alias = $this->_getNamed('alias');
-		$page = $this->Page->find('first', array('conditions' => array('alias' => $this->_getNamed('alias'))));
-		if(empty($page)){
+		$page = $this->Page->findByAlias($alias);
+		if(!$page){
 			$this->Session->setFlash(__('Page not found', true));
 			$this->redirect('/');
 		}

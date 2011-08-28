@@ -32,7 +32,12 @@ if(!isset($this->params['named']['alias'])){
 		}
 		?>
 		<div class="page-wrapper">
-			<img class="page-logo" src="<?php echo $this->webroot ?>img/AdaWiki2.png" alt="AdaWiki2 - The Wiki"/>
+			<?php
+			echo $this->Html->link($this->Html->image('AdaWiki2.png', array('alt' => 'AdaWiki2 - The Wiki')), '/', array(
+				'escape' => false,
+				'class' => 'page-logo',
+			));
+			?>
 			<div class="page-menu">
 				<div class="main-menu">
 					<?php
@@ -115,8 +120,8 @@ if(!isset($this->params['named']['alias'])){
 			<div class='page-footer'>
 				<div class="page-footer-options">
 					<?php
-					if($this->params['action'] == 'index'){
-						echo $this->Html->link(__('Print this page', true), '/wiki/index/print:1/alias:' . $this->params['named']['alias'], array(
+					if($this->params['controller'] == 'wiki' && $this->params['action'] == 'index'){
+						echo $this->Html->link(__('Print this page', true), '/wiki/printView/alias:' . $this->params['named']['alias'], array(
 							'class' => 'wiki-print-page',
 						));
 						echo " - ";

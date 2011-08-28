@@ -104,6 +104,11 @@ body {
 	top: 20px;
 	left: 5px;
 	width: 15%;
+	z-index: 5;
+}
+
+.page-logo img {
+	width: 100%;
 }
 
 .page-menu {
@@ -351,11 +356,6 @@ hr {
 	background: transparent none no-repeat center right;
 	color: #4ca83d;
 	text-decoration: none;
-	opacity: 0.2;
-}
-
-.wiki-fold-button:hover {
-	opacity: 1;
 }
 
 .wiki-fold-button span {
@@ -378,13 +378,46 @@ hr {
 	background-image: url(../img/icons/axialis/web20/rounded/Green/16x16/Table.png);
 }
 
+.wiki-fold-lock {
+	background-image: url(../img/icons/axialis/web20/rounded/Green/16x16/Lock.png);
+}
+
+.wiki-fold-unlock {
+	background-image: url("../img/icons/axialis/web20/rounded/Green/16x16/Lock Open.png");
+}
+
+.wiki-fold-delete {
+	background-image: url(../img/icons/axialis/web20/rounded/Green/16x16/Trash.png);
+	color: #AA0000;
+}
+
 .wiki-fold-print {
 	background-image: url(../img/icons/axialis/web20/16x16/Green/Printer.png);
 }
-.wiki-fold-delete {
-	background-image: url(../img/icons/axialis/web20/16x16/Green/Trash.png);
-	color: #AA0000;
+
+.wiki-fold-menu {
+	min-width: 16px;
+	min-height: 16px;
+	text-align:right;
+	opacity: 0.2;
 }
+
+.wiki-fold-menu a {
+	display: none;
+}
+
+.wiki-fold-menu a:first-child {
+	display: block;
+}
+
+.wiki-fold-menu:hover {
+	opacity: 1;
+}
+
+.wiki-fold-menu:hover a {
+	display: block;
+}
+
 
 .wiki-print-page {
 	padding-left: 22px;
