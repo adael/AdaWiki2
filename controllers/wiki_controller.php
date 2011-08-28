@@ -21,8 +21,7 @@ class WikiController extends AppController{
 
 	function beforeRender(){
 		$menus = $this->Menu->find('all', array(
-			'fields' => array('title', 'link', 'class'),
-			'conditions' => array('visible' => 1),
+			'fields' => array('title', 'link', 'link_type', 'class'),
 			'order' => 'order',
 				));
 		$this->set('mainmenu', $menus);

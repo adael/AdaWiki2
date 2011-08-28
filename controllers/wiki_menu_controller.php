@@ -7,8 +7,7 @@ class WikiMenuController extends AppController{
 
 	function beforeRender(){
 		$menus = $this->Menu->find('all', array(
-			'fields' => array('link', 'title', 'class'),
-			'conditions' => array('visible' => 1),
+			'fields' => array('title', 'link', 'link_type', 'class'),
 			'order' => 'order',
 				));
 		$this->set('mainmenu', $menus);
@@ -23,10 +22,11 @@ class WikiMenuController extends AppController{
 		$this->render('edit');
 	}
 
-	function edit(){
+	function edit($id = null){
 		if(!empty($this->data)){
 			$this->Menu->create();
-			$success = $this->Menu->save($this->data);
+			$this->Menu->set($this->data);
+			$success = $this->Menu->save();
 			if($success){
 				$this->Session->setFlash(__('The menu has been saved', true));
 				if($success['Menu']['link_type'] == 'page'){
@@ -36,6 +36,8 @@ class WikiMenuController extends AppController{
 				}
 			}
 		}
+		$this->Menu->id = $id;
+		$this->data = $this->Menu->read();
 		$this->set('classes', $this->Menu->getClasses());
 		$this->set('linkTypes', $this->Menu->getLinkTypes());
 	}

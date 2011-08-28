@@ -34,10 +34,6 @@ class Menu extends AppModel{
 				'rule' => 'numeric',
 				'message' => __('Invalid order', true),
 			),
-			'visible' => array(
-				'rule' => 'numeric',
-				'message' => __('Invalid value for visible', true),
-			),
 			'class' => array(
 				'rule' => array('inList', array_keys($this->getClasses())),
 				'message' => __('Invalid class type', true),

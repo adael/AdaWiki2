@@ -5,6 +5,8 @@ echo $form->create(null, array(
 	'class' => 'big-form',
 ));
 
+echo $form->hidden('id');
+
 echo $form->input('title', array(
 	'label' => __('Title', true),
 	'size' => 50,

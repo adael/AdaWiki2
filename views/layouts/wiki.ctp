@@ -28,8 +28,29 @@ if(!isset($this->params['named']['alias'])){
 					<?php
 					if(!empty($mainmenu)){
 						foreach($mainmenu as $_menuitem){
-							echo $this->Html->link($_menuitem['Menu']['title'], "/wiki/index/alias:{$_menuitem['Menu']['link']}", array(
-								'class' => $_menuitem['Menu']['class'] . ($_menuitem['Menu']['link'] == $this->params['named']['alias'] ? ' active' : ''),
+							$_active = '';
+							$_target = '_self';
+							switch($_menuitem['Menu']['link_type']){
+								case 'page':
+									$_link = "/wiki/index/alias:{$_menuitem['Menu']['link']}";
+									if($_menuitem['Menu']['link'] == $this->params['named']['alias']){
+										$_active = ' active';
+									}
+									break;
+								case 'internal':
+									$_link = $html->url($_menuitem['Menu']['link']);
+									break;
+								case 'external':
+									$_link = $_menuitem['Menu']['link'];
+									$_target = '_blank';
+									break;
+
+							}
+
+
+							echo $this->Html->link($_menuitem['Menu']['title'], $_link, array(
+								'class' => $_menuitem['Menu']['class'] . $_active,
+								'target' => $_target,
 							));
 						}
 					}

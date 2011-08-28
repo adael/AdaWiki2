@@ -1,13 +1,13 @@
 .border-radius (@radius) {
 	border-radius: @radius;
-	-moz-border-radius: @radius;
 	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
 }
 
 .box-shadow (@shadow) {
 	box-shadow: @shadow;
-	-moz-box-shadow: @shadow;
 	-webkit-box-shadow: @shadow;
+	-moz-box-shadow: @shadow;
 }
 
 .menuitem (@color) {
@@ -19,9 +19,51 @@
 	color: @dcolor;
 
 	box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color, 0 0 2px @dcolor;
-	-o-box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color, 0 0 2px @dcolor;
 	-webkit-box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color, 0 0 2px @dcolor;
+	-o-box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color, 0 0 2px @dcolor;
 	-moz-box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color, 0 0 2px @dcolor;
+}
+
+.list_table (@color) {
+
+	@lcolor: lighten(@color, 10%);
+	@dcolor: darken(@color, 10%);
+
+	border: 1px solid @dcolor;
+	border-collapse: collapse;
+	width: 100%;
+
+	th {
+		background: @color;
+		border-bottom: 1px solid @dcolor;
+		color: darken(@color, 50%);
+		padding: 3px;
+	}
+	tbody td {
+		padding: 2px;
+	}
+
+	tbody tr:nth-child(even) td{
+		background-color: @color;
+	}
+	tbody tr:nth-child(odd) td{
+		background-color: @lcolor;
+	}
+
+}
+
+.tableheader (@color){
+	@lcolor: lighten(@color, 4%);
+	@dcolor: darken(@color, 50%);
+
+	background-color: @lcolor;
+	/* border: 1px solid @dcolor; */
+	color: @dcolor;
+
+	box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color;
+	-webkit-box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color;
+	-o-box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color;
+	-moz-box-shadow: inset 0 1px 3px #fff, inset 0 -15px @color;
 }
 
 /* LAYOUT */
@@ -383,4 +425,8 @@ body {
 	display: block;
 	.border-radius(5px);
 	margin: 3px;
+}
+
+.list {
+	.list_table(#d8eaf3);
 }
