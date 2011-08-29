@@ -81,10 +81,6 @@ if(!isset($this->params['named']['alias'])){
 						'class' => 'wiki-fold-button wiki-fold-manage',
 						'escape' => false,
 					));
-					echo $this->Html->link($this->Html->tag('span', __('Manage pages', true)), '/wiki_pages/manage', array(
-						'class' => 'wiki-fold-button wiki-fold-manage',
-						'escape' => false,
-					));
 					?>
 					<br clear="all"/>
 				</div>
