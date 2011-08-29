@@ -20,20 +20,21 @@ class WikiHelper extends AppHelper{
 
 		$options = array_merge(array('links' => true, 'parser' => 'markdown'), $options);
 
+		switch($options['parser']){
+			case 'markdown':
+				app::import('vendor', 'markdown/markdown');
+				$content = Markdown($content);
+				break;
+		}
+
 		if($options['links']){
 			$pat = '/\[([' . WIKI_PAGE_ALIAS_ALLOWED_CHARS . ']+)\]/iU';
 			$content = preg_replace_callback($pat, array($this, '__link_callback'), $content);
 		}
 
-		switch($options['parser']){
-			case 'markdown':
-				app::import('vendor', 'markdown/markdown');
-				echo Markdown($content);
-				break;
-			default:
-				echo $content;
-				break;
-		}
+		echo $content;
+
+
 	}
 
 	/**
