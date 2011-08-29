@@ -47,18 +47,22 @@ $columns = array(
 	array(
 		'name' => 'Page.content_numwords',
 		'text' => __('Num. Words', true),
+		'td' => array('align' => 'center'),
 	),
 	array(
-		'name' => 'Page.content_legth',
+		'name' => 'Page.content_length',
 		'text' => __('Content length', true),
+		'td' => array('align' => 'center'),
 	),
 	array(
 		'name' => 'Page.locked',
 		'text' => __('Locked', true),
+		'td' => array('align' => 'center'),
 	),
 	array(
 		'name' => 'Page.created',
 		'text' => __('Created', true),
+		'td' => array('align' => 'center'),
 	),
 	array(
 		'text' => __('Actions', true),
