@@ -28,12 +28,11 @@ CREATE TABLE `wiki_menus` (
   `link` text NOT NULL,
   `link_type` enum('page','internal','external') NOT NULL,
   `order` int(11) NOT NULL DEFAULT '0',
-  `visible` int(11) NOT NULL DEFAULT '1',
   `class` enum('silver','pink','blue','gold','green','red','none') NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,7 +56,7 @@ CREATE TABLE `wiki_pages` (
   `internal` tinyint(1) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `NewIndex1` (`alias`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -69,4 +68,4 @@ CREATE TABLE `wiki_pages` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-08-27 21:50:43
+-- Dump completed on 2011-08-29 19:55:02
