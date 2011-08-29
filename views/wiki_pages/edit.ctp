@@ -24,7 +24,7 @@ echo $form->input('title', array(
 	'label' => __('Title', true),
 	'class' => 'caption',
 	'size' => 50,
-	'default' => ucfirst(str_replace('_', ' ', $this->params['named']['alias'])),
+	'default' => ucfirst(str_replace('_', ' ', $alias)),
 ));
 
 echo $form->input('content', array(

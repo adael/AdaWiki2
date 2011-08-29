@@ -32,9 +32,10 @@ class Page extends AppModel{
 
 	function beforeDelete($cascade = true){
 		if($this->field('internal')){
+			$this->invalidate('internal', __("You cannot delete this page because it's a system page", true));
 			return false;
 		}
-		parent::beforeDelete($cascade);
+		return parent::beforeDelete($cascade);
 	}
 
 	function setPageLock($alias, $locked){

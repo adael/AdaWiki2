@@ -18,7 +18,7 @@ class ButtonRenderer extends WikiDatagridCellRenderer{
 			'title' => __('Delete menu', true),
 				));
 		if($item['Menu']['link_type'] == 'page'){
-			$out .= $this->Html->link('', '/wiki_pages/edit/alias:' . $item['Menu']['link'], array(
+			$out .= $this->Html->link('', '/wiki_pages/edit/' . $item['Menu']['link'], array(
 				'class' => 'icon-16 Write2',
 				'title' => __('Edit page', true),
 					));

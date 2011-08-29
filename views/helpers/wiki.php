@@ -43,7 +43,7 @@ class WikiHelper extends AppHelper{
 	 * @return string to replace with matches
 	 */
 	function __link_callback($matches){
-		return $this->Html->link($matches[1], "/wiki_pages/view/alias:" . wiki_encode_alias($matches[1]));
+		return $this->Html->link($matches[1], "/wiki_pages/view/" . wiki_encode_alias($matches[1]));
 	}
 
 

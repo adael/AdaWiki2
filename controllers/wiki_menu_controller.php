@@ -31,7 +31,7 @@ class WikiMenuController extends AppController{
 			if($success){
 				$this->Session->setFlash(__('The menu has been saved', true));
 				if($success['Menu']['link_type'] == 'page'){
-					$this->redirect('/wiki/index/alias:' . $success['Menu']['link']);
+					$this->redirect('/wiki_pages/view/' . $success['Menu']['link']);
 				}else{
 					$this->redirect(array('action' => 'index'));
 				}

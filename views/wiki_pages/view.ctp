@@ -4,20 +4,20 @@ extract($page['Page'], EXTR_REFS);
 <div class="wiki-page-buttons wiki-fold-menu">
 	<?php
 	if(!$locked){
-		echo $this->Html->link($this->Html->tag('span', __('Edit this page', true)), '/wiki_pages/edit/alias:' . $alias, array(
+		echo $this->Html->link($this->Html->tag('span', __('Edit this page', true)), '/wiki_pages/edit/' . $alias, array(
 			'class' => 'wiki-fold-button wiki-fold-edit',
 			'escape' => false,
 		));
-		echo $this->Html->link($this->Html->tag('span', __('Lock page', true)), '/wiki_pages/lock/alias:' . $alias, array(
+		echo $this->Html->link($this->Html->tag('span', __('Lock page', true)), '/wiki_pages/lock/' . $alias, array(
 			'class' => 'wiki-fold-button wiki-fold-lock',
 			'escape' => false,
 		));
-		echo $this->Html->link($this->Html->tag('span', __('Delete this page', true)), '/wiki_pages/delete/alias:' . $alias, array(
+		echo $this->Html->link($this->Html->tag('span', __('Delete this page', true)), '/wiki_pages/delete/' . $alias, array(
 			'class' => 'wiki-fold-button wiki-fold-delete',
 			'escape' => false,
 		));
 	}else{
-		echo $this->Html->link($this->Html->tag('span', __('Unlock page', true)), '/wiki_pages/unlock/alias:' . $alias, array(
+		echo $this->Html->link($this->Html->tag('span', __('Unlock page', true)), '/wiki_pages/unlock/' . $alias, array(
 			'class' => 'wiki-fold-button wiki-fold-unlock',
 			'escape' => false,
 		));

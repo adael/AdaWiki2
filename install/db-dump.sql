@@ -32,7 +32,7 @@ CREATE TABLE `wiki_menus` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `wiki_menus` (
 
 LOCK TABLES `wiki_menus` WRITE;
 /*!40000 ALTER TABLE `wiki_menus` DISABLE KEYS */;
-INSERT INTO `wiki_menus` VALUES (1,'Portada','Front','page',0,'red','2011-08-28 16:00:56','2011-08-28 16:01:12'),(2,'Google','http://www.google.com','external',0,'gold','2011-08-28 16:01:25','2011-08-28 16:01:25'),(3,'Enlace 1','Enlace_1','page',0,'none','2011-08-28 16:01:45','2011-08-28 16:03:41'),(4,'Enalce 2','Enalce_2','page',0,'none','2011-08-28 16:02:10','2011-08-28 19:11:55');
+INSERT INTO `wiki_menus` VALUES (5,'Portada','Front','page',0,'blue','2011-08-30 00:28:04','2011-08-30 00:28:04');
 /*!40000 ALTER TABLE `wiki_menus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,4 +88,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-08-29 19:55:02
+-- Dump completed on 2011-08-30  0:35:25

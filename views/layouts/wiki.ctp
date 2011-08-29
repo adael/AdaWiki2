@@ -1,9 +1,3 @@
-<?php
-// ensure current page alias is in named
-if(!isset($this->params['named']['alias'])){
-	$this->params['named']['alias'] = '';
-}
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -48,8 +42,8 @@ if(!isset($this->params['named']['alias'])){
 							$_target = '_self';
 							switch($_menuitem['Menu']['link_type']){
 								case 'page':
-									$_link = "/wiki_pages/view/alias:{$_menuitem['Menu']['link']}";
-									if($_menuitem['Menu']['link'] == $this->params['named']['alias']){
+									$_link = "/wiki_pages/view/{$_menuitem['Menu']['link']}";
+									if(isset($alias) && $_menuitem['Menu']['link'] == $alias){
 										$_active = ' active';
 									}
 									break;
@@ -79,6 +73,10 @@ if(!isset($this->params['named']['alias'])){
 					));
 					echo $this->Html->link($this->Html->tag('span', __('Manage menú', true)), '/wiki_menu/index', array(
 						'class' => 'wiki-fold-button wiki-fold-manage',
+						'escape' => false,
+					));
+					echo $this->Html->link($this->Html->tag('span', __('Manage pages', true)), '/wiki_pages/index', array(
+						'class' => 'wiki-fold-button wiki-fold-pages',
 						'escape' => false,
 					));
 					?>
@@ -125,8 +123,8 @@ if(!isset($this->params['named']['alias'])){
 			<div class='page-footer'>
 				<div class="page-footer-options">
 					<?php
-					if($this->params['controller'] == 'wiki_pages' && $this->params['action'] == 'index'){
-						echo $this->Html->link(__('Print this page', true), '/wiki_pages/printView/alias:' . $this->params['named']['alias'], array(
+					if(isset($alias) && $this->params['controller'] == 'wiki_pages' && $this->params['action'] == 'index'){
+						echo $this->Html->link(__('Print this page', true), '/wiki_pages/printView/' . $alias, array(
 							'class' => 'wiki-print-page',
 						));
 						echo " - ";

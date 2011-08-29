@@ -210,10 +210,10 @@
 	background-position: 0 0;
 }
 
-/* Green sprite */
-.icon-16 { background-image: url("csg-4e5bfda312739.png"); }
-/* Blue sprite */
-.icon-16:hover { background-image: url("csg-4e5bff186702b.png");}
+.icon-16, icon-16.green { background-image: url("csg-4e5bfda312739.png"); }
+.icon-16.red {background-image: url("csg-4e5c1a713c3cd.png"); }
+.icon-16.grey, .icon-16.disabled {background-image: url("csg-4e5c1a041c722.png"); }
+.icon-16:hover, .icon-16.blue { background-image: url("csg-4e5bff186702b.png");}
 
 .icon-16 + .icon-16 {
 	margin-left: 3px;

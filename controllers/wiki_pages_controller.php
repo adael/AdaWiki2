@@ -11,32 +11,24 @@ class WikiPagesController extends AppController{
 	 */
 	var $Page;
 
-	function beforeFilter(){
-		parent::beforeFilter();
-		if(!$this->_checkNamed('alias')){
-			$this->_setNamed('alias', Configure::read('Wiki.front'));
-		}
-	}
-
 	function beforeRender(){
-		$menus = $this->Menu->find('all', array(
-			'fields' => array('title', 'link', 'link_type', 'class'),
-			'order' => 'order'));
-		$this->set('mainmenu', $menus);
+		$this->set('mainmenu', $this->Menu->find('all', array(
+					'fields' => array('title', 'link', 'link_type', 'class'),
+					'order' => 'order')));
 	}
 
 	function index(){
-		
+		$this->helpers[] = 'WikiDatagrid';
+		$this->set('items', $this->paginate('Page'));
 	}
 
-	function view(){
-		$alias = $this->_getNamed('alias');
+	function view($alias = null){
 		$page = $this->Page->findByAlias($alias);
 		if(!$page || empty($page['Page']['content'])){
 			$this->redirect(array('action' => 'edit', 'alias' => $alias));
 		}
 		$this->helpers[] = 'Wiki';
-		$this->set('page', $page);
+		$this->set(compact('alias', 'page'));
 	}
 
 	function preview(){
@@ -45,27 +37,26 @@ class WikiPagesController extends AppController{
 		$this->set('content', $this->data);
 	}
 
-	function printView(){
-		$alias = $this->_getNamed('alias');
+	function printView($alias){
 		$page = $this->Page->findByAlias($alias);
 		if(!$page){
 			$this->redirect('/');
 		}
 		$this->set(array(
+			'alias' => $alias,
 			'content' => $page['Page']['content'],
 			'title' => $page['Page']['title'],
 		));
 		$this->layout = 'print';
 	}
 
-	function edit(){
-		$alias = $this->_getNamed('alias');
+	function edit($alias = null){
 		$page = $this->Page->findByAlias($alias);
 
 		// Check content to prevent looping with index
 		if(!empty($page['Page']['locked']) && !empty($page['Page']['content'])){
 			$this->Session->setFlash(__('This page is locked', true));
-			$this->redirect("/wiki/index/alias:$alias");
+			$this->redirect("/wiki_pages/index/$alias");
 		}
 
 		if(!empty($this->data)){
@@ -101,36 +92,39 @@ class WikiPagesController extends AppController{
 			$this->data['Menu']['pin'] = true;
 		}
 
+		$this->set('alias', $alias);
 		$this->set('classes', $this->Menu->getClasses());
 	}
 
-	function lock(){
-		$alias = $this->_getNamed('alias');
+	function lock($alias = null){
 		$this->Page->setPageLock($alias, 1);
 		$this->Session->setFlash(__('The page has been locked', true));
-		$this->redirect("/wiki/index/alias:" . $alias);
+		$this->redirect($this->referer());
 	}
 
-	function unlock(){
-		$alias = $this->_getNamed('alias');
+	function unlock($alias = null){
 		$this->Page->setPageLock($alias, 0);
 		$this->Session->setFlash(__('The page has been unlocked', true));
-		$this->redirect("/wiki/index/alias:" . $alias);
+		$this->redirect($this->referer());
 	}
 
-	function delete(){
-		$alias = $this->_getNamed('alias');
-		$page = $this->Page->findByAlias($alias);
-		if(!$page){
-			$this->Session->setFlash(__('Page not found', true));
-			$this->redirect('/');
-		}
-		$page = $page[$this->Page->alias];
+	function delete($alias = null){
 		if(!empty($this->data)){
-			$this->Page->delete($page['id']);
-			$this->redirect('/');
+			$this->Page->create($this->data);
+			if($this->Page->delete()){
+				$this->Session->setFlash(__('The page has been deleted', true));
+			}else{
+				$this->Session->setFlash(join($this->Page->validationErrors));
+			}
+			$this->redirect('/wiki_pages/index');
+		}else{
+			$page = $this->Page->findByAlias($alias);
+			if(!$page){
+				$this->Session->setFlash(__('Page not found', true));
+				$this->redirect('/wiki_pages/index');
+			}
+			$this->data = $page;
 		}
-		$this->set('page', $page);
 	}
 
 }
