@@ -14,6 +14,7 @@ if(!isset($this->params['named']['alias'])){
 		echo $this->Html->script('less-1.1.3.min');
 		#echo $this->Html->css('site');
 		echo $this->Html->css('SexyButtons/sexybuttons');
+		echo $this->Html->css('sprites/icons-16');
 		echo $this->Html->script('jquery.min.js');
 		echo $scripts_for_layout;
 		echo $this->Html->script('wiki.js');
@@ -47,7 +48,7 @@ if(!isset($this->params['named']['alias'])){
 							$_target = '_self';
 							switch($_menuitem['Menu']['link_type']){
 								case 'page':
-									$_link = "/wiki/index/alias:{$_menuitem['Menu']['link']}";
+									$_link = "/wiki_pages/view/alias:{$_menuitem['Menu']['link']}";
 									if($_menuitem['Menu']['link'] == $this->params['named']['alias']){
 										$_active = ' active';
 									}
@@ -60,7 +61,6 @@ if(!isset($this->params['named']['alias'])){
 									$_target = '_blank';
 									break;
 							}
-
 
 							echo $this->Html->link($_menuitem['Menu']['title'], $_link, array(
 								'class' => $_menuitem['Menu']['class'] . $_active,
@@ -78,6 +78,10 @@ if(!isset($this->params['named']['alias'])){
 						'escape' => false,
 					));
 					echo $this->Html->link($this->Html->tag('span', __('Manage menú', true)), '/wiki_menu/index', array(
+						'class' => 'wiki-fold-button wiki-fold-manage',
+						'escape' => false,
+					));
+					echo $this->Html->link($this->Html->tag('span', __('Manage pages', true)), '/wiki_pages/manage', array(
 						'class' => 'wiki-fold-button wiki-fold-manage',
 						'escape' => false,
 					));
@@ -125,8 +129,8 @@ if(!isset($this->params['named']['alias'])){
 			<div class='page-footer'>
 				<div class="page-footer-options">
 					<?php
-					if($this->params['controller'] == 'wiki' && $this->params['action'] == 'index'){
-						echo $this->Html->link(__('Print this page', true), '/wiki/printView/alias:' . $this->params['named']['alias'], array(
+					if($this->params['controller'] == 'wiki_pages' && $this->params['action'] == 'index'){
+						echo $this->Html->link(__('Print this page', true), '/wiki_pages/printView/alias:' . $this->params['named']['alias'], array(
 							'class' => 'wiki-print-page',
 						));
 						echo " - ";

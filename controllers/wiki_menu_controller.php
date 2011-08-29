@@ -43,8 +43,20 @@ class WikiMenuController extends AppController{
 		$this->set('linkTypes', $this->Menu->getLinkTypes());
 	}
 
-	function delete(){
-
+	function delete($id = null){
+		if(!empty($this->data)){
+			$this->Menu->create($this->data);
+			$this->Menu->delete();
+			$this->Session->setFlash(__('The menu has been deleted', true));
+			$this->redirect('/wiki_menu/index');
+		}else{
+			$this->Menu->id = $id;
+			if(!$this->Menu->exists()){
+				$this->Session->setFlash(__('Menu not found', true));
+				$this->redirect('/wiki_menu/index');
+			}
+			$this->data = $this->Menu->read();
+		}
 	}
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-class WikiController extends AppController{
+class WikiPagesController extends AppController{
 
 	var $uses = array('Page', 'Menu');
 	var $helpers = array('Form');
@@ -26,6 +26,10 @@ class WikiController extends AppController{
 	}
 
 	function index(){
+		
+	}
+
+	function view(){
 		$alias = $this->_getNamed('alias');
 		$page = $this->Page->findByAlias($alias);
 		if(!$page || empty($page['Page']['content'])){

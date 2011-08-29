@@ -167,21 +167,3 @@ function str_word_count_utf8($string, $format = 0){
 	}
 	return preg_match_all(WORD_COUNT_MASK, $string, $matches);
 }
-
-/**
- * Retrieve an element of the array
- * @param array $data the array to extract the item
- * @param string $path the path to the item
- * @return array
- */
-function dot_get(array &$data, $path){
-	$keys = explode('.', $path);
-	foreach($keys as $k){
-		if(isset($data[$k])){
-			$data = & $data[$k];
-		}else{
-			return null;
-		}
-	}
-	return $data;
-}

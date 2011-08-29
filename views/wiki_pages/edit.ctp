@@ -7,7 +7,7 @@ $html->script('markitup/markitup/jquery.markitup', array('inline' => false));
 $html->script('markitup/markitup/sets/markdown/set', array('inline' => false));
 
 $html->scriptBlock("	$(document).ready(function(){
-		mySettings.previewParserPath = '{$this->webroot}/wiki/preview';
+		mySettings.previewParserPath = '{$this->webroot}/wiki_pages/preview';
 		$('#txtContentEdit').markItUp(mySettings).focus();
 	});", array('inline' => false));
 

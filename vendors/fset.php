@@ -1,11 +1,12 @@
 <?php
+
 /**
  * fset class
  * A standalone lightweight class for manage arrays with dot notation.
  *
  * @author Carlos Gant <carlos@aicor.com>
  */
-class fset {
+class fset{
 
 	/**
 	 * Retrieve an element of the array
@@ -17,7 +18,7 @@ class fset {
 		$keys = explode('.', $path);
 		foreach($keys as $k){
 			if(isset($data[$k])){
-				$data =& $data[$k];
+				$data = & $data[$k];
 			}else{
 				return null;
 			}
@@ -36,10 +37,10 @@ class fset {
 		$last = array_pop($keys);
 		foreach($keys as $k){
 			if(isset($data[$k]) && is_array($data[$k])){
-				$data =& $data[$k];
+				$data = & $data[$k];
 			}else{
 				$data[$k] = array();
-				$data =& $data[$k];
+				$data = & $data[$k];
 			}
 		}
 		$data[$last] = $value;
@@ -48,8 +49,8 @@ class fset {
 	/**
 	 * Count the elements of an array item.
 	 * @example
-	 *		$a = array('The' => array('Items' => array('one', 'two', 'tree')));
-	 *		echo fset::count($a, 'The.Items'); // => gives 3
+	 * 		$a = array('The' => array('Items' => array('one', 'two', 'tree')));
+	 * 		echo fset::count($a, 'The.Items'); // => gives 3
 	 * @param array $data
 	 * @param string $path
 	 * @return int number of items or null if the key not exists.
@@ -59,7 +60,7 @@ class fset {
 		$last = array_pop($keys);
 		foreach($keys as $k){
 			if(isset($data[$k]) && is_array($data[$k])){
-				$data =& $data[$k];
+				$data = & $data[$k];
 			}else{
 				return null;
 			}
@@ -78,7 +79,7 @@ class fset {
 		$last = array_pop($keys);
 		foreach($keys as $k){
 			if(isset($data[$k]) && is_array($data[$k])){
-				$data =& $data[$k];
+				$data = & $data[$k];
 			}else{
 				return;
 			}
@@ -97,7 +98,7 @@ class fset {
 		$last = array_pop($keys);
 		foreach($keys as $k){
 			if(isset($data[$k]) && is_array($data[$k])){
-				$data =& $data[$k];
+				$data = & $data[$k];
 			}else{
 				return null;
 			}
@@ -116,12 +117,21 @@ class fset {
 		$last = array_pop($keys);
 		foreach($keys as $k){
 			if(isset($data[$k]) && is_array($data[$k])){
-				$data =& $data[$k];
+				$data = & $data[$k];
 			}else{
 				return true;
 			}
 		}
 		return empty($data[$last]);
+	}
+
+	static function replace_vars($string, &$data, $varOpen = '{', $varClose = '}'){
+		$string = "{Menu.id} != '2' && {Menu.link_type} == 'page' && {Menu.link} != ''";
+		$n = preg_match_all('/' . preg_quote($varOpen) . '([a-zA-Z0-9_]+[a-zA-Z0-9_\.]+[a-zA-Z0-9_]+)+' . preg_quote($varClose) . '/', $string, $matches);
+		for($i = 0; $i < $n; $i++){
+			$string = str_replace($matches[0][$i], "'" . fset::get($data, $matches[1][$i]) . "'", $string);
+		}
+		return $string;
 	}
 
 }

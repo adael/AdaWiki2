@@ -1,7 +1,18 @@
 <?php
+
 class AppController extends Controller{
 
-	var $components = array('Session', 'DebugKit.Toolbar');
+	var $components = array('Session');
+
+	function constructClasses(){
+		if(Configure::read('debug') > 0 && is_file(APP . 'plugins' . DS . 'debug_kit' . DS . 'debug_kit_app_controller.php')){
+			$this->components[] = 'DebugKit.Toolbar';
+		}
+
+		app::import('vendor', 'fset');
+
+		parent::constructClasses();
+	}
 
 	function _checkNamed($k){
 		return!empty($this->params['named'][$k]);

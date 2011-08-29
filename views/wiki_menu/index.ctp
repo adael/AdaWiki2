@@ -1,56 +1,61 @@
 <?php
 
-/*
- *   [Menu] => Array
-  (
-  [id] => 2
-  [title] => Prueba 2
-  [link] => Prueba_2
-  [link_type] => page
-  [order] => 0
-  [visible] => 1
-  [class] => blue
-  [created] => 2011-08-28 12:09:13
-  [modified] => 2011-08-28 12:16:35
-  )
+class ButtonRenderer extends WikiDatagridCellRenderer{
 
- */
-echo $html->tag('h1', __('Manage menus', true));
+	private $Html;
 
-$buttons = array(
-	$this->Html->link(__('Edit', true), '/wiki/edit/alias:{Page.alias}', array(
-		'class' => 'wbtn edit',
-	))
-);
+	function __construct($html){
+		$this->Html = $html;
+	}
+
+	function render($col, $item){
+		$out = $this->Html->link('', '/wiki_menu/edit/' . $item['Menu']['id'], array(
+			'class' => 'icon-16 Write',
+			'title' => __('Edit menu', true),
+				));
+		$out .= $this->Html->link('', '/wiki_menu/delete/' . $item['Menu']['id'], array(
+			'class' => 'icon-16 Trash',
+			'title' => __('Delete menu', true),
+				));
+		if($item['Menu']['link_type'] == 'page'){
+			$out .= $this->Html->link('', '/wiki_pages/edit/alias:' . $item['Menu']['link'], array(
+				'class' => 'icon-16 Write2',
+				'title' => __('Edit page', true),
+					));
+		}
+		return $out;
+	}
+
+}
 
 $columns = array(
 	array(
-		'name' => 'Page.title',
+		'name' => 'Menu.title',
 		'text' => __('Title', true),
 	),
 	array(
-		'name' => 'Page.link',
+		'name' => 'Menu.link',
 		'text' => __('Link', true),
 	),
 	array(
-		'name' => 'Page.link_type',
+		'name' => 'Menu.link_type',
 		'text' => __('Link type', true),
 	),
 	array(
-		'name' => 'Page.order',
+		'name' => 'Menu.order',
 		'text' => __('Order', true),
 	),
 	array(
-		'name' => 'Page.class',
+		'name' => 'Menu.class',
 		'text' => __('Class', true),
 	),
 	array(
 		'text' => __('Actions', true),
-		'value' => join($buttons),
-		'replaceValueWith' => array('Page.alias'),
+		'td' => array('align' => 'left', 'width' => '56'),
+		'renderer' => new ButtonRenderer($this->Html),
 	),
 );
 
+echo $html->tag('h1', __('Manage menus', true));
 $this->WikiDatagrid->render($columns, $items);
-
 echo $this->Html->tag('div', $this->Paginator->numbers(), array('class' => 'pagination'));
