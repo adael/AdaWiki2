@@ -59,4 +59,16 @@ class WikiMenuController extends AppController{
 		}
 	}
 
+	function populate(){
+		for($i = 0; $i < 100; $i++){
+			$this->Menu->create(array(
+				'id' => $i + 100,
+				'title' => "Menu " . $i,
+				'link' => "menu_$i",
+			));
+			$this->Menu->save();
+		}
+		die("End");
+	}
+
 }

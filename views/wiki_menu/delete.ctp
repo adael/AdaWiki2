@@ -7,11 +7,11 @@ echo $this->Form->input('title', array(
 	'label' => __('Title', true),
 	'size' => 50,
 ));
-
+echo "<div style='text-align: right;'>";
 echo $this->Html->link($this->Html->tag('span', __('Cancel', true), array('class' => 'cancel')), '/wiki_menu/index', array(
 	'class' => 'sexybutton sexysimple sexylarge',
 	'escape' => false,
 ));
-
 echo ' <button type="submit" class="sexybutton sexysimple sexylarge"><span class="delete">' . __('Delete', true) . '</span></button>';
+echo "</div>";
 echo $this->Form->end();

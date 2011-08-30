@@ -25,7 +25,7 @@ class WikiPagesController extends AppController{
 	function view($alias = null){
 		$page = $this->Page->findByAlias($alias);
 		if(!$page || empty($page['Page']['content'])){
-			$this->redirect(array('action' => 'edit', 'alias' => $alias));
+			$this->redirect(array('action' => 'edit', $alias));
 		}
 		$this->helpers[] = 'Wiki';
 		$this->set(compact('alias', 'page'));
@@ -56,7 +56,7 @@ class WikiPagesController extends AppController{
 		// Check content to prevent looping with index
 		if(!empty($page['Page']['locked']) && !empty($page['Page']['content'])){
 			$this->Session->setFlash(__('This page is locked', true));
-			$this->redirect("/wiki_pages/index/$alias");
+			$this->redirect("/wiki_pages/view/$alias");
 		}
 
 		if(!empty($this->data)){
@@ -82,7 +82,7 @@ class WikiPagesController extends AppController{
 					$this->Menu->delete($this->data['Menu']['id']);
 				}
 				$this->Session->setFlash("The page has been saved");
-				$this->redirect(array('action' => 'index', 'alias' => $alias));
+				$this->redirect(array('action' => 'view', $alias));
 			}
 		}
 		$this->data = $page;

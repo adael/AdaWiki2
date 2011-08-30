@@ -1,6 +1,7 @@
 <?php
 extract($page['Page'], EXTR_REFS);
 ?>
+
 <div class="wiki-page-buttons wiki-fold-menu">
 	<?php
 	if(!$locked){
@@ -22,6 +23,18 @@ extract($page['Page'], EXTR_REFS);
 			'escape' => false,
 		));
 	}
+	echo $this->Html->link($this->Html->tag('span', __('Add menú', true)), '/wiki_menu/add', array(
+		'class' => 'wiki-fold-button wiki-fold-add',
+		'escape' => false,
+	));
+	echo $this->Html->link($this->Html->tag('span', __('Manage menú', true)), '/wiki_menu/index', array(
+		'class' => 'wiki-fold-button wiki-fold-manage',
+		'escape' => false,
+	));
+	echo $this->Html->link($this->Html->tag('span', __('Manage pages', true)), '/wiki_pages/index', array(
+		'class' => 'wiki-fold-button wiki-fold-pages',
+		'escape' => false,
+	));
 	?>
 	<br clear="all"/>
 </div>

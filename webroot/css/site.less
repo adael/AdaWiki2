@@ -49,7 +49,10 @@
 	tbody tr:nth-child(odd) td{
 		background-color: @lcolor;
 	}
+	tbody tr:hover td {
+		background-color: @dcolor;
 
+	}
 }
 
 .tableheader (@color){
@@ -422,7 +425,6 @@ hr {
 	display: block;
 }
 
-
 .wiki-print-page {
 	padding-left: 22px;
 	background: transparent url(../img/icons/axialis/web20/16x16/Green/Printer.png) no-repeat 0 0;
@@ -478,3 +480,31 @@ pre {
 	color: #444;
 }
 
+.pagination {
+	text-align: center;
+	text-decoration: none;
+	font-family: "Arial black", arial;
+	color: #EEE;
+}
+
+.pagination span {
+	color: #BBB;
+}
+
+.pagination span.current, .pagination a {
+	font-size: 1.5em;
+	color: #999;
+	text-decoration: none;
+	padding: 0 5px;
+}
+
+.pagination span.current {
+	color: #BBB;
+	background: #FFF;
+	border: 1px solid #BBB;
+	.border-radius(5px);
+}
+
+.pagination a:hover {
+	color: #000;
+}

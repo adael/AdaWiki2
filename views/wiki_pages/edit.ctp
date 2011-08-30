@@ -1,5 +1,4 @@
 <?php
-
 /* @var $html HtmlHelper */
 $html->css('/js/markitup/markitup/skins/simple/style', 'stylesheet', array('inline' => false));
 $html->css('/js/markitup/markitup/sets/markdown/style', 'stylesheet', array('inline' => false));
@@ -50,7 +49,9 @@ echo $form->input('Menu.class', array(
 		'style' => !empty($this->data['Menu']['pin']) ? '' : 'display: none;',
 	),
 ));
-
-echo '<button type="submit" class="sexybutton sexysimple sexylarge"><span class="save">' . __('Save', true) . '</span></button>';
-
+?>
+<div style="text-align: right;">
+	<button type="submit" class="sexybutton sexysimple sexylarge"><span class="save"><?php echo __('Save', true); ?></span></button>
+</div>
+<?php
 echo $form->end();
