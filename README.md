@@ -18,9 +18,7 @@
 
 ### Multilanguage
 
-Use CakePHP task to extract pot and translate into your language.
-
-    cake i18n extract
+Use [CakePHP task](http://book.cakephp.org/view/1106/The-CakePHP-Console) to extract pot and translate into your language.
 
 ## Installation
 
