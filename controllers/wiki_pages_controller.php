@@ -28,6 +28,7 @@ class WikiPagesController extends AppController{
 			$this->redirect(array('action' => 'edit', $alias));
 		}
 		$this->helpers[] = 'Wiki';
+		$this->helpers[] = 'Js';
 		$this->set(compact('alias', 'page'));
 	}
 

@@ -1,7 +1,12 @@
 <?php
 extract($page['Page'], EXTR_REFS);
+$this->Html->css('/js/highlight/styles/default.css', 'stylesheet', array('inline' => false));
+$this->Html->script('highlight/highlight.pack', array('inline' => false));
+echo $this->Html->scriptBlock("
+	hljs.tabReplace = '    ';
+	hljs.initHighlightingOnLoad();
+");
 ?>
-
 <div class="wiki-page-buttons wiki-fold-menu">
 	<?php
 	if(!$locked){

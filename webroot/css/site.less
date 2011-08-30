@@ -34,25 +34,25 @@
 	width: 100%;
 
 	th {
-		background: @color;
-		border-bottom: 1px solid @dcolor;
-		color: darken(@color, 50%);
-		padding: 3px;
-	}
-	tbody td {
-		padding: 2px;
-	}
+	background: @color;
+	border-bottom: 1px solid @dcolor;
+	color: darken(@color, 50%);
+	padding: 3px;
+}
+tbody td {
+	padding: 2px;
+}
 
-	tbody tr:nth-child(even) td{
-		background-color: @color;
-	}
-	tbody tr:nth-child(odd) td{
-		background-color: @lcolor;
-	}
-	tbody tr:hover td {
-		background-color: @dcolor;
+tbody tr:nth-child(even) td{
+	background-color: @color;
+}
+tbody tr:nth-child(odd) td{
+	background-color: @lcolor;
+}
+tbody tr:hover td {
+	background-color: @dcolor;
 
-	}
+}
 }
 
 .tableheader (@color){
@@ -172,7 +172,7 @@ body {
 	position: absolute;
 	top: 16px; left: 16.1%; right: 8px;
 	bottom: 28px;
-	padding: 16px 20px;
+	padding: 16px 20px 16px 30px;
 	overflow: auto;
 }
 
@@ -193,10 +193,6 @@ body {
 	margin: 8px 0 4px 0;
 }
 
-.content-body {
-
-}
-
 .page-footer {
 	position: absolute;
 	bottom: 0; left: 16%; right: 0;
@@ -209,6 +205,13 @@ body {
 }
 .page-footer a{color: #222; text-decoration: none;}
 
+.content-body a {
+	color: #666;
+}
+
+.content-body a:hover {
+	color: #30789c;
+}
 
 .big-form {}
 
@@ -474,10 +477,10 @@ hr {
 
 pre {
 	border: 1px solid #e0e0e0;
-	background: #F0F0F0;
-	padding: 5px;
 	.border-radius(5px);
-	color: #444;
+/*	padding: 5px;*/
+/*	background: #F0F0F0;*/
+/*	color: #444;*/
 }
 
 .pagination {
