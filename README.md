@@ -14,7 +14,7 @@
 * Automatic code highlighting on code blocks (with highlight.js)
 * Multilanguage (currently english), spanish not yet finished
 * Easy installation
-* CakePHP Made
+* Made with CakePHP
 
 ### Multilanguage
 
