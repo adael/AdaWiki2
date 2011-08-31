@@ -73,4 +73,16 @@ $columns = array(
 
 echo $html->tag('h1', __('Manage pages', true));
 $this->WikiDatagrid->render($columns, $items);
-echo $this->Html->tag('div', $this->Paginator->numbers(), array('class' => 'pagination'));
+?>
+<hr/>
+<div class='pagination'>
+	<?php
+	if($this->Paginator->hasPrev()){
+		echo $this->Paginator->prev($this->Html->image('icons/axialis/web20/rounded/Grey/16x16/Arrow2 Left.png'), array('escape' => false));
+	}
+	echo $this->Paginator->numbers();
+	if($this->Paginator->hasNext()){
+		echo $this->Paginator->next($this->Html->image('icons/axialis/web20/rounded/Grey/16x16/Arrow2 Right.png'), array('escape' => false));
+	}
+	?>
+</div>
