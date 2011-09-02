@@ -106,6 +106,11 @@ function prd(){
  */
 
 /**
+ * Simple ajax detection. Personally I think CakeRequest do too much work for detecting ajax.
+ */
+define('AJAX', !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strcasecmp($_SERVER['HTTP_X_REQUESTED_WITH'], 'xmlhttprequest') == 0);
+
+/**
  * Allowed chars can be changed, but not recommended
  * For french or cyrilic characters, simply add
  */

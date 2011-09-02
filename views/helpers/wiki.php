@@ -31,10 +31,8 @@ class WikiHelper extends AppHelper{
 			$pat = '/\[([' . WIKI_PAGE_ALIAS_ALLOWED_CHARS . ']+)\]/iU';
 			$content = preg_replace_callback($pat, array($this, '__link_callback'), $content);
 		}
-
+		
 		echo $content;
-
-
 	}
 
 	/**
@@ -45,6 +43,5 @@ class WikiHelper extends AppHelper{
 	function __link_callback($matches){
 		return $this->Html->link($matches[1], "/wiki_pages/view/" . wiki_encode_alias($matches[1]));
 	}
-
 
 }

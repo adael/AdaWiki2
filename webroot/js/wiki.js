@@ -10,7 +10,10 @@ $(function(){
 			f = 40;
 		}
 		$content.css('font-size', f);
-		$.cookie('font-size', f, {expires: 1, path: '/'});
+		$.cookie('font-size', f, {
+			expires: 1,
+			path: '/'
+		});
 	});
 
 
@@ -20,13 +23,19 @@ $(function(){
 		f -= 2;
 		if(f < 7) f = 7;
 		$content.css('font-size', f);
-		$.cookie('font-size', f, {expires: 1, path: '/'});
+		$.cookie('font-size', f, {
+			expires: 1,
+			path: '/'
+		});
 	});
 
 	$("#font-normal").click(function(e){
 		e.preventDefault();
 		var f = $('body').css('font-size');
-		$.cookie('font-size', f, {expires: 1, path: '/'});
+		$.cookie('font-size', f, {
+			expires: 1,
+			path: '/'
+		});
 		$content.css('font-size', f);
 	});
 
@@ -37,10 +46,11 @@ $(function(){
 	}
 
 	$("#flashMessage").slideDown('normal');
-	setTimeout(function(){$("#flashMessage").slideUp('normal');}, 3000);
+	setTimeout(function(){
+		$("#flashMessage").slideUp('normal');
+	}, 3000);
 
 });
-
 
 /**
  * jQuery Cookie plugin

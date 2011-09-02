@@ -2,23 +2,17 @@
 
 class ButtonRenderer extends WikiDatagridCellRenderer{
 
-	private $Html;
-
-	function __construct($html){
-		$this->Html = $html;
-	}
-
-	function render($col, $item){
-		$out = $this->Html->link('', '/wiki_menu/edit/' . $item['Menu']['id'], array(
+	function prepareValue($col, $row){
+		$out = $this->Html->link('', '/wiki_menu/edit/' . $row['Menu']['id'], array(
 			'class' => 'icon-16 Write',
 			'title' => __('Edit menu', true),
 				));
-		$out .= $this->Html->link('', '/wiki_menu/delete/' . $item['Menu']['id'], array(
+		$out .= $this->Html->link('', '/wiki_menu/delete/' . $row['Menu']['id'], array(
 			'class' => 'icon-16 Trash',
 			'title' => __('Delete menu', true),
 				));
-		if($item['Menu']['link_type'] == 'page'){
-			$out .= $this->Html->link('', '/wiki_pages/edit/' . $item['Menu']['link'], array(
+		if($row['Menu']['link_type'] == 'page'){
+			$out .= $this->Html->link('', '/wiki_pages/edit/' . $row['Menu']['link'], array(
 				'class' => 'icon-16 Write2',
 				'title' => __('Edit page', true),
 					));

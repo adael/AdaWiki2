@@ -2,35 +2,29 @@
 
 class ButtonRenderer extends WikiDatagridCellRenderer{
 
-	private $Html;
-
-	function __construct($html){
-		$this->Html = $html;
-	}
-
-	function render($col, $item){
-		$out = $this->Html->link('', '/wiki_pages/view/' . $item['Page']['alias'], array(
+	function prepareValue($col, $row){
+		$out = $this->Html->link('', '/wiki_pages/view/' . $row['Page']['alias'], array(
 			'class' => 'icon-16 Arrow2UpRight',
 			'title' => __('View page', true),
 				));
-		$out .= $this->Html->link('', '/wiki_pages/edit/' . $item['Page']['alias'], array(
+		$out .= $this->Html->link('', '/wiki_pages/edit/' . $row['Page']['alias'], array(
 			'class' => 'icon-16 Write2',
 			'title' => __('Edit page', true),
 				));
 
-		if($item['Page']['locked']){
-			$out .= $this->Html->link('', '/wiki_pages/unlock/' . $item['Page']['alias'], array(
+		if($row['Page']['locked']){
+			$out .= $this->Html->link('', '/wiki_pages/unlock/' . $row['Page']['alias'], array(
 				'class' => 'icon-16 green LockOpen',
 				'title' => __('Unlock page', true),
 					));
 		}else{
-			$out .= $this->Html->link('', '/wiki_pages/lock/' . $item['Page']['alias'], array(
+			$out .= $this->Html->link('', '/wiki_pages/lock/' . $row['Page']['alias'], array(
 				'class' => 'icon-16 grey Lock',
 				'title' => __('Lock page', true),
 					));
 		}
 
-		$out .= $this->Html->link('', '/wiki_pages/delete/' . $item['Page']['alias'], array(
+		$out .= $this->Html->link('', '/wiki_pages/delete/' . $row['Page']['alias'], array(
 			'class' => 'icon-16 red Trash',
 			'title' => __('Delete paage', true),
 				));

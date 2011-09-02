@@ -3,8 +3,10 @@
 class WikiDatagridHelper extends AppHelper{
 
 	var $helpers = array('Html');
+	private $__renderer;
 
-	function render($columns, $items){
+	function render($columns, $rows){
+		$this->__renderer = new WikiDatagridCellRenderer($this->Html);
 		echo "<table class='list'>";
 		echo "<thead>";
 		foreach($columns as $col){
@@ -12,26 +14,14 @@ class WikiDatagridHelper extends AppHelper{
 		}
 		echo "</thead>";
 		echo "<tbody>";
-		foreach($items as $item){
+		foreach($rows as $row){
 			echo "<tr>";
 			foreach($columns as $col){
 				if(!empty($col['renderer'])){
-
-					$value = $col['renderer']->render($col, $item);
+					$value = $col['renderer']->render($col, $row);
 				}else{
-
-					if(isset($col['value'])){
-						$value = & $col['value'];
-					}elseif(isset($col['name'])){
-						$value = & fset::get($item, $col['name']);
-					}
-
-					if(empty($value) && !empty($col['default'])){
-						$value = & $col['default'];
-					}
+					$value = $this->__renderer->render($col, $row);
 				}
-
-				echo $this->Html->tag('td', $value, @$col['td']);
 			}
 			echo "</tr>";
 		}
@@ -39,25 +29,43 @@ class WikiDatagridHelper extends AppHelper{
 		echo "</table>";
 	}
 
-	private function __actions_renderer($col, $item){
-		if(!empty($col['rules'])){
-			foreach($col['rules'] as $index => $rule){
-				if($rule[0] == 'hideIf'){
-					$s = fset::replace_vars($rule[1], $item, '{', '}');
-					prd($s);
-				}
-			}
-		}
-		return join($col['actions']);
-	}
-
 }
 
-abstract class WikiDatagridCellRenderer{
+class WikiDatagridCellRenderer{
+
+	protected $Html;
+
+	function __construct($html){
+		$this->Html = $html;
+	}
+
+	function prepareValue($col, $row){
+		if(isset($col['value'])){
+			$value = & $col['value'];
+		}elseif(isset($col['name'])){
+			$value = & fset::get($row, $col['name']);
+		}else{
+			$value = null;
+		}
+
+		if(empty($value) && !empty($col['default'])){
+			$value = & $col['default'];
+		}
+
+		if($value === null && isset($col['onNull'])){
+			$value = & $col['onNull'];
+		}
+
+		return $value;
+	}
 
 	/**
 	 * @param array $col
 	 * @param array $data
 	 */
-	abstract function render($col, $data);
+	function render($col, $row){
+		$value = $this->prepareValue($col, $row);
+		echo $this->Html->tag('td', $value, isset($col['td']) ? $col['td'] : null);
+	}
+
 }
