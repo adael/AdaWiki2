@@ -3,10 +3,9 @@
 class WikiDatagridHelper extends AppHelper{
 
 	var $helpers = array('Html');
-	private $__renderer;
 
 	function render($columns, $rows){
-		$this->__renderer = new WikiDatagridCellRenderer($this->Html);
+		$defaultRenderer = null;
 		echo "<table class='list'>";
 		echo "<thead>";
 		foreach($columns as $col){
@@ -20,7 +19,10 @@ class WikiDatagridHelper extends AppHelper{
 				if(!empty($col['renderer'])){
 					$value = $col['renderer']->render($col, $row);
 				}else{
-					$value = $this->__renderer->render($col, $row);
+					if(!$defaultRenderer){
+						$defaultRenderer = new WikiDatagridCellRenderer($this->Html);
+					}
+					$value = $defaultRenderer->render($col, $row);
 				}
 			}
 			echo "</tr>";
@@ -39,7 +41,7 @@ class WikiDatagridCellRenderer{
 		$this->Html = $html;
 	}
 
-	function prepareValue($col, $row){
+	function prepare($col, $row){
 		if(isset($col['value'])){
 			$value = & $col['value'];
 		}elseif(isset($col['name'])){
@@ -64,7 +66,7 @@ class WikiDatagridCellRenderer{
 	 * @param array $data
 	 */
 	function render($col, $row){
-		$value = $this->prepareValue($col, $row);
+		$value = $this->prepare($col, $row);
 		echo $this->Html->tag('td', $value, isset($col['td']) ? $col['td'] : null);
 	}
 

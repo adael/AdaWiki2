@@ -2,7 +2,7 @@
 
 class ButtonRenderer extends WikiDatagridCellRenderer{
 
-	function prepareValue($col, $row){
+	function prepare($col, $row){
 		$out = $this->Html->link('', '/wiki_pages/view/' . $row['Page']['alias'], array(
 			'class' => 'icon-16 Arrow2UpRight',
 			'title' => __('View page', true),

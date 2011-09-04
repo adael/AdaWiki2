@@ -2,7 +2,7 @@
 
 class ButtonRenderer extends WikiDatagridCellRenderer{
 
-	function prepareValue($col, $row){
+	function prepare($col, $row){
 		$out = $this->Html->link('', '/wiki_menu/edit/' . $row['Menu']['id'], array(
 			'class' => 'icon-16 Write',
 			'title' => __('Edit menu', true),
