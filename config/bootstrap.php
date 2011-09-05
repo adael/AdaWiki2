@@ -114,7 +114,7 @@ define('AJAX', !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strcasecmp($_SERVER[
  * Allowed chars can be changed, but not recommended
  * For french or cyrilic characters, simply add
  */
-define('WIKI_PAGE_ALIAS_ALLOWED_CHARS', 'A-Za-z0-9' . preg_quote('_-ÁÉÍÓÚÜáéíóúüñÑ€$:%. '));
+define('WIKI_PAGE_ALIAS_ALLOWED_CHARS', 'A-Za-z0-9' . preg_quote('_-ÁÉÍÓÚÜáéíóúüñÑ€$%. '));
 
 /**
  * Prepare the alias for wiki pages
