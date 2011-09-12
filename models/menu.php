@@ -2,7 +2,14 @@
 
 class Menu extends AppModel{
 
+	/**
+	 * @var array holds class list
+	 */
 	private $__classes;
+
+	/**
+	 * @var array holds link types
+	 */
 	private $__linkTypes;
 
 	function beforeValidate($options = array()){
@@ -53,6 +60,10 @@ class Menu extends AppModel{
 		return parent::beforeValidate($options);
 	}
 
+	/**
+	 * Return available classes
+	 * @return array
+	 */
 	function getClasses(){
 		if(!$this->__classes){
 			$this->__classes = array(
@@ -68,6 +79,10 @@ class Menu extends AppModel{
 		return $this->__classes;
 	}
 
+	/**
+	 * Return available link types.
+	 * @return array
+	 */
 	function getLinkTypes(){
 		if(!$this->__linkTypes){
 			$this->__linkTypes = array(

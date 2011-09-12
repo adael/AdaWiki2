@@ -1,9 +1,12 @@
 <?php
-echo $this->Form->create(null, array(
+
+echo $this->Form->create('Menu', array(
 	'url' => "/" . $this->params['url']['url'],
 	'class' => 'big-form',
 ));
 echo $this->Form->hidden('id');
+echo $form->error('id');
+
 echo $this->Form->input('title', array(
 	'label' => __('Title', true),
 	'size' => 50,
@@ -19,6 +22,14 @@ echo $this->Form->input('link_type', array(
 echo $this->Form->input('class', array(
 	'label' => __('Style', true),
 ));
+
+echo $this->Form->input('order', array(
+	'label' => __('Order', true),
+	'type' => 'text',
+	'size' => 11,
+	'maxlength' => 11,
+));
+
 echo "<div style='text-align: right;'>";
 echo $this->Html->link($this->Html->tag('span', __('Cancel', true), array('class' => 'cancel')), '/wiki_menu/index', array(
 	'class' => 'sexybutton sexysimple sexylarge',

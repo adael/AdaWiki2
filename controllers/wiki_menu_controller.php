@@ -37,8 +37,7 @@ class WikiMenuController extends AppController{
 				}
 			}
 		}
-		$this->Menu->id = $id;
-		$this->data = $this->Menu->read();
+		$this->data = $this->Menu->findById($id);
 		$this->set('classes', $this->Menu->getClasses());
 		$this->set('linkTypes', $this->Menu->getLinkTypes());
 	}
