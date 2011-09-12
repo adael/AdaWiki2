@@ -34,14 +34,17 @@ $columns = array(
 	array(
 		'name' => 'Menu.link_type',
 		'text' => __('Link type', true),
-	),
-	array(
-		'name' => 'Menu.order',
-		'text' => __('Order', true),
+		'map' => $linkTypes,
 	),
 	array(
 		'name' => 'Menu.class',
 		'text' => __('Class', true),
+		'map' => $classes,
+	),
+	array(
+		'name' => 'Menu.order',
+		'text' => __('Order', true),
+		'td' => array('align' => 'center'),
 	),
 	array(
 		'text' => __('Actions', true),

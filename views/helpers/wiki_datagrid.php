@@ -58,6 +58,10 @@ class WikiDatagridCellRenderer{
 			$value = & $col['onNull'];
 		}
 
+		if(isset($col['map']) && isset($col['map'][$value])){
+			$value = $col['map'][$value];
+		}
+
 		return $value;
 	}
 
